@@ -1,7 +1,8 @@
-<h2>
-  收藏夹
-</h2>
-<div class="container-fluid">
+
+<div class="container-fluid favorite-page">
+  <h2>
+    收藏夹
+  </h2>
   <table class="table table-boderness">
     <thead>
       <tr>
@@ -33,7 +34,7 @@
               <%= link_to(fav.product.title, product_path(fav.product))%>
             </td>
             <td>
-              <%= link_to(image_tag(fav.product.image, :width => 200, :height => 200), product_path(fav.product)) %>
+              <%= link_to(image_tag(fav.product.image, :width => 80, :height => 80), product_path(fav.product)) %>
             </td>
             <td>
               <%= fav.created_at.strftime("%Y-%m-%d") %>
