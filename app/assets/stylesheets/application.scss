@@ -77,12 +77,15 @@
   margin: auto;
   object-fit: cover;
 }
-product-detail-info
+
+.product-detail-info{
+  margin-top: 30px;
+}
+
 .product_thumbnail{
   width: 100%;
   height: 200px;
   margin-bottom: 80px;
-  margin-top: 30px;
 }
 
 .body_container{
