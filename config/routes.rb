@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     member do
       post :clear
       post :remove_product
+      post :remove_immediately_product
       post :increase_product
       post :decrease_product
     end

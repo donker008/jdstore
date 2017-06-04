@@ -60,7 +60,7 @@
             <span>¥<%=cart_item.quantity* cart_item.product.price%></span>
           </div>
           <div class="col-md-1 cell text-right">
-            <%= link_to(remove_product_cart_path(cart_item.product), method: :post) do%>
+            <%= link_to(remove_immediately_product_cart_path(cart_item.product), method: :post) do%>
               <i class="fa fa-times" aria-hidden="true"></i>
             <% end %>
           </div>
@@ -87,18 +87,18 @@
       <% if @cart.cart_items.blank? %>
         <input type="checkbox" id="check-all"/> 已选(0)
       <% else %>
-        <input type="checkbox" id="check-all"/> 已选(<%=@cart.cart_items.size %>)
+        <input type="checkbox" id="check-all"/> 已选(<%=get_current_cart.cart_items.size %>)
       <% end %>
     </div>
     <div class="col-md-2 ">
-      <%= link_to("批量删除", clear_cart_path(@cart), method: :post)%>
+      <%= link_to("批量删除", clear_cart_path(get_current_cart), method: :post)%>
     </div>
     <div class="col-md-4 text-right">
-      <span class="total-info">商品合计: ¥<%= @cart.cart_total_price %></span>
+      <span class="total-info">商品合计: ¥<%= get_current_cart.cart_total_price %></span>
       <span>应付总额:</span>
     </div>
     <div class="col-md-2 total-price">
-      <span class=""><%= @cart.cart_total_price %></span>
+      <span class=""><%= get_current_cart.cart_total_price %></span>
     </div>
     <div class="col-md-2 btn-order" id="btn-order">
       <div class="row">

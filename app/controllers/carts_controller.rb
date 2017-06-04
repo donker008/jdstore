@@ -26,6 +26,19 @@ class CartsController < ApplicationController
     end
   end
 
+  def remove_immediately_product
+    @product = Product.find(params[:id])
+    if !@product.blank?
+      quantity = current_immediately_cart.get_quantity(@product)
+      current_immediately_cart.remove_product(@product)
+      @product.quantity += quantity
+      @product.save
+      redirect_to :back
+    else
+      flash[:warning] = "商品已下架"
+    end
+  end
+
   def increase_product
     @product = Product.find(params[:id])
     if !@product.blank?
