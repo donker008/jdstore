@@ -390,3 +390,136 @@ margin: 20px;
 .new_user{
   margin: 20px;
 }
+
+
+// cart page
+.cart-content .header > div {
+  display: inline-block;
+  margin: 20px 0px;
+}
+.cart-content .header{
+    margin: 20px 0px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+}
+
+.cart-content .m-boby{
+    margin: 20px 0px;
+
+}
+.cart-content .m-boby  .inner-item{
+    display: inline-block;
+}
+
+.cart-content .m-boby  .item{
+    margin: 10px 0px;
+
+}
+
+.cart-content .m-boby .adjust-quantity{
+  border: 1px solid #ddd;
+  display: inline-block;
+}
+
+.inner-item .adjust-quantity{
+  padding: 0px;
+}
+.inner-item .adjust-quantity .adjust-item-num{
+  display: inline-block;
+}
+.adjust-quantity .adjust-item-add{
+  border: 0px solid #ddd;
+  border-left-width: 1px;
+  display: inline-block;
+}
+
+.adjust-quantity .adjust-item-minus{
+  border:0px solid #ddd;
+  border-right-width: 1px;
+  display: inline-block;
+}
+
+.adjust-quantity .adjust-item-add > a{
+  color: #ddd;
+}
+
+.adjust-quantity .adjust-item-minus > a{
+  color: #ddd;
+}
+
+.cart-content .footer {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  height: 66px;
+  color: #333;
+  margin: 20px 0px;
+}
+
+.cart-content {
+  color: #333;
+  margin-bottom: 100px;
+}
+
+.cart-content .total-info{
+  color: #999;
+}
+
+.cart-content .total-price{
+  font-size: 22px;
+  color: #d4282d;
+  font-weight: 700;
+  margin-top: -5px !important;
+}
+
+.cart-content .btn-order{
+  color: #fff;
+  background-color: #b4a078;
+  margin: -21px 0px 0px 30px;
+  height: 66px;
+}
+
+.cart-content  .btn-order  a{
+  color: #fff;
+}
+
+.cart-content  #btn-order{
+  margin: -21px 0 0 30px;
+}
+
+.cart-content .btn-order .row{
+    margin: 20px;
+}
+.cart-content .footer  > div > a{
+  color: #333;
+}
+
+.cart-content .sub-title{
+    color: #999;
+}
+
+.cart-content{
+  color: #333;
+  font-size: 14px;
+}
+
+.cart-content > a{
+  color: #333;
+}
+
+.cart-content .item .checkbox{
+  margin-top: 30px;
+  padding-left: 30px;
+}
+
+.cart-content .footer .checkbox{
+    margin-left: -30px;
+}
+
+.cart-content .footer > div{
+    margin:0px;
+}
+
+
+.cart-content .inner-item .cell{
+  margin-top: 30px;
+}
