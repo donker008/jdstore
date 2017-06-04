@@ -24,7 +24,7 @@
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
-  color: #777;
+  color: #ccc;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -365,6 +365,12 @@ margin: 20px;
 .hot24{
     border: 1px solid #e8e8e8;
     margin-bottom: 20px;
+    margin-left: -20px;
+}
+
+.hotSell .item {
+    margin-top: 24px;
+    margin-left: -15px;
 }
 
 
