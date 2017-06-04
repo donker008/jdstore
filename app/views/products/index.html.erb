@@ -42,7 +42,7 @@
 
       <% @categoies.each do |cate| %>
         <% unless @all_products[cate.name].blank? %>
-          <span class="name "><%= cate.name %></span> 
+          <span class="name"><%= cate.name %></span>
           <hr />
           <table class="table borderless">
           <% @all_products[cate.name].each_with_index do |product, index|%>
@@ -53,7 +53,10 @@
                 <div class="product_thumbnail text-center col-sm-4">
                   <%= link_to(image_tag(product.image, :alt => product.title, :width => 200, :height => 200), product_path(product)) %>
                   <br />
-                  <%= link_to(product.title, product_path(product)) %>
+                  <span class="product-name">
+                    <%= link_to(product.title, product_path(product)) %>
+                  </span>
+
                 </div>
               </td>
             <% if ((index+1) % 4 )== 0 || index == (@all_products[cate.name].size-1) %>
