@@ -77,11 +77,13 @@
   width: auto;
   height: 100%;
   margin: auto;
+  object-fit: cover;
 }
 
 .product_thumbnail{
   width: 200px;
   height: 200px;
+  margin-bottom: 80px;
 }
 
 .body_container{
@@ -99,9 +101,6 @@
   border:none !important;
 }
 
-.product_thumbnail{
-  margin-bottom: 80px;
-}
 
 .btn-confirm-buy{
   margin: 50px 0px 100px 0;
@@ -582,8 +581,4 @@ margin: 20px;
 
 .product-detail{
   width:1400px;
-}
-
-.product_thumbnail img {
-    object-fit: cover;
 }
