@@ -19,12 +19,12 @@
 <!-- nav -->
 <% unless @categoies.blank? %>
 <div>
-  <ul class="list-inline text-center">
-    <li >
+  <ul class="list-inline text-center category-list">
+    <li class="category-item">
       <%= link_to("首页", products_path) %>
     </li>
     <% @categoies.each do |cate| %>
-      <li>
+      <li class="category-item">
       <%= link_to(cate.name, filter_by_category_product_path(cate)) %>
      </li>
     <% end %>

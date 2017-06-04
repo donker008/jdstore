@@ -42,7 +42,7 @@
 
       <% @categoies.each do |cate| %>
         <% unless @all_products[cate.name].blank? %>
-          <span class="name"><%= cate.name %></span> 
+          <span class="name "><%= cate.name %></span> 
           <hr />
           <table class="table borderless">
           <% @all_products[cate.name].each_with_index do |product, index|%>

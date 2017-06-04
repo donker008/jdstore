@@ -604,4 +604,21 @@ margin: 20px;
     font-size: 24px;
     font-weight: 700;
     line-height: 44px;
+    font-family: "Heiti SC","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3",verdana;
+}
+
+.category-list .category-item > a {
+
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    font-family: "Heiti SC","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3",verdana;
+}
+
+.category-list .category-item > a:hover , a:active {
+    color: #e35150;
+    border-bottom: #e35150;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    padding-bottom: 4px;
 }
