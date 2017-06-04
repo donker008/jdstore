@@ -3,12 +3,18 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_cart
 
+  helper_method :current_immediately_cart
+
   def current_cart
     @current_cart ||= find_cart
   end
 
+  def current_immediately_cart
+    @current_immediately_cart ||= find_immediately_cart
+  end
+
   private
-  
+
   def find_cart
     cart = Cart.find_by(id: session[:cart_id])
     if cart.blank?
@@ -17,4 +23,14 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = cart.id;
     return cart
   end
+
+  def find_immediately_cart
+    cart = Cart.find_by(id: session[:cart_id_temp])
+    if cart.blank?
+      cart = Cart.create
+    end
+    session[:cart_id_temp] = cart.id;
+    return cart
+  end
+
 end

@@ -18,8 +18,8 @@
   </div>
 
   <div class="m-boby row">
-    <% unless @cart.cart_items.blank? %>
-      <%  @cart.cart_items.each do |cart_item| %>
+    <%  unless get_current_cart.cart_items.blank? %>
+      <%  get_current_cart.cart_items.each do |cart_item| %>
       <div class="row item">
 
         <div class="inner-item col-md-11">
@@ -60,7 +60,9 @@
             <span>¥<%=cart_item.quantity* cart_item.product.price%></span>
           </div>
           <div class="col-md-1 cell text-right">
-            <i class="fa fa-times" aria-hidden="true"></i>
+            <%= link_to(remove_product_cart_path(cart_item.product), method: :post) do%>
+              <i class="fa fa-times" aria-hidden="true"></i>
+            <% end %>
           </div>
         </div>
       </div>

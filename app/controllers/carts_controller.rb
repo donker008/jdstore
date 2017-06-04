@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   def index
     @cart = current_cart
+    @immediately_cart = current_immediately_cart
     @categoies = ProductCategory.all
   end
 

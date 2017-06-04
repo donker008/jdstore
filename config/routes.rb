@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :products do
     member do
       post :add_to_cart
-      post :add_to_cart_and_buy
+      post :buy_immediately
       get :filter_by_category
       post :favorite
     end

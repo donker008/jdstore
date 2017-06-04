@@ -60,10 +60,9 @@
 
 
           <div class="row">
-            <%= link_to("立即购买", add_to_cart_and_buy_product_path(@product), :method => :post, class:"btn btn-lg btn-danger btn-add-to-cart") %>
             <% if @product.quantity > 0 %>
             <div class="detail-btn-add-to-cart">
-
+              <%= link_to("立即购买", buy_immediately_product_path(@product), :method => :post, class:"btn btn-lg btn-danger btn-add-to-cart") %>  
               <%= link_to(add_to_cart_product_path(@product), :method => :post, class:"btn btn-lg btn-danger")  do%>
               <i class="fa fa-shopping-cart" aria-hidden="true"></i> 加入购物车
               <% end %>

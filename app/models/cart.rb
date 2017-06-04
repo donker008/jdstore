@@ -2,6 +2,9 @@ class Cart < ApplicationRecord
   has_many :cart_items
   has_many :products , through: :cart_items, source: :product
 
+  class << self; attr_accessor :immediately_cart_available end
+  @immediately_cart_available = false
+
   def add_product_to_cart(product)
     ci = cart_items.build
     ci.product = product
@@ -9,6 +12,12 @@ class Cart < ApplicationRecord
     ci.save
     product.quantity -= 1
     product.save
+    Cart.immediately_cart_available = false
+  end
+
+  def add_immediately_product_to_cart(product)
+    add_product_to_cart(product)
+    Cart.immediately_cart_available = true
   end
 
   def cart_total_price
@@ -78,5 +87,7 @@ class Cart < ApplicationRecord
     return false
   end
 
-
+  def available
+    Cart.immediately_cart_available
+  end
 end

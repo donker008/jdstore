@@ -19,6 +19,21 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.navbar .navbar-brand{
+  color: #ccc;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus{
+  color: #777;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #ccc;
+}
+.navbar-default .navbar-nav > li > a:hover {
+    color: #777;
+}
+
 .admin_proudct_table{
   border: solid 3px #dcdcdc;
   box-shadow: 0 0 4px 1px #f2f2f2;
@@ -522,4 +537,14 @@ margin: 20px;
 
 .cart-content .inner-item .cell{
   margin-top: 30px;
+}
+
+// checkout
+.cart_detail{
+  margin: 100px;
+}
+
+//payment
+.order-payment{
+  margin: 100px;
 }

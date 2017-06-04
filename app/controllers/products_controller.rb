@@ -35,11 +35,13 @@ class ProductsController < ApplicationController
     redirect_to :back
   end
 
-  def add_to_cart_and_buy
+  def buy_immediately
     @product = Product.find(params[:id])
+    current_immediately_cart.clear_cart
     if !@product.blank?
-      if !current_cart.is_product_added?(@product)
-          current_cart.add_product_to_cart(@product)
+      if !current_immediately_cart.is_product_added?(@product)
+          current_immediately_cart.add_immediately_product_to_cart(@product)
+          puts "1 :" + current_immediately_cart.id.to_s+ current_immediately_cart.to_s
       end
     end
     redirect_to carts_path
