@@ -90,16 +90,26 @@
       <div class="row product-detail-info">
         <div class="col-md-8 detail">
           <ul class="nav nav-tabs">
-              <li role="presentation" class="active"><a href="#">详情</a></li>
-              <li role="presentation"><a href="#">评论</a></li>
+              <li role="presentation" class="active" id="tab-detail"><a>详情</a></li>
+              <li role="presentation" id="tab-review"><a>评论</a></li>
           </ul>
-          <div class="sum-info  row">
-              <%= render_product_sum_info(@product) %>
-          </div>
-          <div class="sum-images">
-                <img src="<%=@product.image%>" />
-                <img src="<%=@product.image%>" />
-                <img src="<%=@product.image%>" />
+          <div class="container-fluid content">
+
+            <!-- product detail -->
+            <div class="row" id="product-detail-info">
+              <div class="sum-info">
+                  <%= render_product_sum_info(@product) %>
+              </div>
+              <div class="sum-images">
+                    <img src="<%=@product.image%>" />
+                    <img src="<%=@product.image%>" />
+                    <img src="<%=@product.image%>" />
+              </div>
+            </div>
+
+            <!-- reviews -->
+            <%= render "reviews" %>
+
           </div>
         </div>
         <%= render "hot24" %>

@@ -633,6 +633,7 @@ margin: 20px;
     padding-bottom: 4px;
 }
 
+// search
 #search_field{
   border-bottom-width: 1px;
   border-bottom-color: #e35150;
@@ -659,4 +660,53 @@ margin: 20px;
     border: 0px;
     font-size: 20px;
     color: #e35150;
+}
+
+// review
+.no-review{
+  margin: 100px;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+.review-list{
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+.review-list .user-info{
+    padding: 10px;
+}
+
+.review-list .user-info .name{
+      margin: 10px 5px;
+      font-size: 12px;
+      font-weight: 200;
+}
+.review-list .item{
+  border-bottom: 1px dashed #e8e8e8;
+  height: 140px;
+}
+
+.review-list .item > div , .review-content {
+  height: 140px;
+}
+
+.review-list .form-group{
+    margin-top: 40px;
+}
+
+.review-list .review-content{
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.review-list .review-content .pull-right{
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.review-list .review-time{
+  font-size: 12px;
+  font-weight: 200;
+  line-height: 140px;
 }

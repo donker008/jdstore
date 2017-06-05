@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     @categoies = ProductCategory.all
     @q  = Product.ransack(params[:q])
     @hot_products =  Order.hot24_products
-
+    @review = Review.new
   end
 
   def add_to_cart
