@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   validates :category, presence:true
   mount_uploader :image, ImageUploader
   # belongs_to :product_category
+  has_many :reviews
 
   def index_of_category
     ret_index = 0
@@ -24,6 +25,18 @@ class Product < ApplicationRecord
    else self.category == "儿童服饰" || self.category == "婴幼儿服饰"
      type = "cloth"
    end
+ end
+
+ def has_brought(user_id)
+   orders = Order.where(:user_id => user_id).all
+   orders.each do |order|
+     order.product_lists.each do |product|
+       if product.id == self.id
+         return true
+       end
+     end
+   end
+   return false
  end
 
 end

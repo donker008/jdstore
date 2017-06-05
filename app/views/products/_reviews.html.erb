@@ -1,0 +1,51 @@
+<div class="row review-list" id="product-review-list">
+  <% if @product.reviews.blank? %>
+    <div class="no-review text-center">
+      <span>
+        我们期待你的点评！
+      </span>
+    </div>
+  <% else %>
+    <% @product.reviews.each do |review|%>
+      <div class="row  item">
+        <div class="col-md-2">
+          <div class="user-info text-center">
+              <%= image_tag("http://yanxuan.nosdn.127.net/485ff1be6912be6ae696b6d360d1b101.png", :width => 80, :height =>80)%>
+              <br />
+              <div class="name">
+                <%= current_user.email %>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="row review-content">
+            <div class="col-md-9">
+              <p>
+                <%= review.review %>
+              </p>
+            </div>
+            <div class="col-md-3 review-time">
+              <span><%= review.created_at.strftime("%Y-%m-%d %h:%M")%></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <!-- comment area -->
+<% if true || !@product.has_brought(current_user.id) %>
+
+  <div class="row">
+      <div class="form-group">
+        <%= simple_form_for @review do |f|%>
+          <%= f.input :review , label: false %>
+          <%= hidden_field_tag :product_id, @product.id %>
+          <div class="pull-right">
+            <%= f.submit "发表点评", id:"write-comment", class: "btn btn-lg btn-danger", disable_with: "Submiting..." %>
+          </div>
+        <% end %>
+      </div>
+  </div>
+<% end %>
+</div>

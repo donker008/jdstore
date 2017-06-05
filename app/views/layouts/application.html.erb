@@ -16,4 +16,22 @@
     </div>
     <%= render 'comm/footer' %>
   </body>
+
+  <script>
+  $(document).ready(function() {
+    $("#tab-detail").click(function(){
+      $("#product-detail-info").show();
+      $("#product-review-list").hide();
+      $("#tab-review").removeClass("active");
+      $("#tab-detail").addClass("active");
+    });
+    $("#tab-review").click(function(){
+      console.log("#tab-review");
+      $("#product-detail-info").hide();
+      $("#product-review-list").show();
+      $("#tab-detail").removeClass("active");
+      $("#tab-review").addClass("active");
+    });
+  })
+  </script>
 </html>
