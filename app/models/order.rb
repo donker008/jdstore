@@ -93,4 +93,40 @@ class Order < ApplicationRecord
       return false
     end
   end
+
+  # class method define
+  def self.hot24_products
+      where_string  = ' and  aasm_state != "order_cancelled" and aasm_state != "order_placed"'
+      orders = Order.where('created_at >= :one_day_ago' + where_string,
+      :one_day_ago => Time.now - 1.days)
+      if orders.blank?
+        orders = Order.where('created_at >= :one_month_ago' + where_string,
+        :one_month_ago => Time.now - 30.days)
+      end
+
+      producthash =  Hash.new
+      orders.each do | order |
+        order.product_lists.each do |product|
+          count = producthash[product.id]
+          if count.blank?
+            count = 0
+          end
+          count += product.quantity
+          producthash[product.id] = count
+        end
+      end
+
+      producthash_sorted = producthash.sort_by{|key,value| value }
+      product_ids =  Array.new
+      producthash_sorted.each_with_index do | key_value , index|
+        if index < 10
+          product_id = key_value[0]
+          product_ids.push(product_id)
+        else
+          break
+        end
+      end
+      products = Product.where(id: product_ids)
+  end
+
 end

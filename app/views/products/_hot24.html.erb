@@ -6,34 +6,21 @@
     <div class="body">
       <ul class="hotSell">
 
-        <%  for i in 1..10 %>
+        <%  @hot_products.each do |product| %>
           <li class="item">
-            <a href="" target="_blank">
-              <div class="img-wrap">
-                <img width="250" height="250" src="http://yanxuan.nosdn.127.net/b90dbc9bc3e3b2224dc5716d96dcc220.jpg?imageView&quality=90&thumbnail=430x430">
-              </div>
-              <div class="content">
-                <div class="title">
-                  <span class="name">小丸子童年书包</span>
+            <%= link_to(product_path(product)) do%>
+                <div class="img-wrap">
+                  <%= image_tag(product.image, :width => 250, :height => 250) %>
                 </div>
-                <div class="price">¥699</div>
-              </div>
-            </a>
+                <div class="content">
+                  <div class="title">
+                    <span class="name">小丸子童年书包</span>
+                  </div>
+                  <div class="price">¥699</div>
+                </div>
+            <% end %>
           </li>
         <% end %>
-        <li class="item">
-          <a href="" target="_blank">
-            <div class="img-wrap">
-              <img width="250" height="250" src="http://yanxuan.nosdn.127.net/b90dbc9bc3e3b2224dc5716d96dcc220.jpg?imageView&quality=90&thumbnail=430x430">
-            </div>
-            <div class="content">
-              <div class="title">
-                <span class="name">小丸子童年书包</span>
-              </div>
-              <div class="price">¥699</div>
-            </div>
-          </a>
-        </li>
       </ul>
   </div>
     <% if @popluar24.blank? %>

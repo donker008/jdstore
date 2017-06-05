@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @categoies = ProductCategory.all
     @q  = Product.ransack(params[:q])
+    @hot_products =  Order.hot24_products
+
   end
 
   def add_to_cart
