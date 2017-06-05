@@ -12,12 +12,16 @@ class ProductsController < ApplicationController
          end
          product_temps.push(product)
     end
+    @q  = Product.ransack(params[:q])
 
   end
 
   def show
     @product = Product.find(params[:id])
     @categoies = ProductCategory.all
+    @q  = Product.ransack(params[:q])
+    @hot_products =  Order.hot24_products
+
   end
 
   def add_to_cart
@@ -51,6 +55,7 @@ class ProductsController < ApplicationController
     @category = ProductCategory.find(params[:id])
     @products = Product.where(:category => @category.name).all
     @categoies = ProductCategory.all
+    @q  = Product.ransack(params[:q])
   end
 
   def favorite
@@ -71,6 +76,12 @@ class ProductsController < ApplicationController
     end
     redirect_back(fallback_location: :back)
   end
+
+
+   def  search
+      @q  = Product.ransack(params[:q])
+      @products = @q.result(distict: true)
+   end
 
   private
   def product_params

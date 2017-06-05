@@ -728,3 +728,31 @@ margin: 20px;
     border-bottom-style: solid;
     padding-bottom: 4px;
 }
+
+#search_field{
+  border-bottom-width: 1px;
+  border-bottom-color: #e35150;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  color: #999999;
+  font-size: 18px;
+}
+
+#search_field{
+  border-bottom-width: 1px;
+  border-bottom-color: #e35150;
+  border-top-width: 0px;
+  border-left-width: 0px;
+  border-right-width: 0px;
+  color: #999999;
+  font-size: 18px;
+  outline: none;
+}
+
+#search_button{
+    background: transparent;
+    border: 0px;
+    font-size: 20px;
+    color: #e35150;
+}

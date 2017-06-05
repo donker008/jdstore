@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       get :filter_by_category
       post :favorite
     end
+    collection do
+      match 'search' => 'products#search', via: [:get, :post], as: :search
+    end
   end
 
   resources :carts do
