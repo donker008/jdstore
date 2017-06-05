@@ -5,6 +5,11 @@ class FavoritesController < ApplicationController
   @favorites = current_user.favorites.order("created_at desc")
  end
 
+ def show
+   @order = Order.find_by_token(params[:id])
+   @product_lists = @order.product_lists
+ end
+
  def destroy
    @favorite = Favorite.find(params[:id])
    if @favorite.blank? || @favorite.user_id != current_user.id
