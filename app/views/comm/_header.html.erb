@@ -6,7 +6,7 @@
     <div class="row vertical-align ">
       <div class="col-md-8 ">
         <%= search_form_for @q, url: search_products_path, html: {method: :post} do |f| %>
-           <%= f.search_field :title_or_description_or_category_cont , id: "search_field"%>
+           <%= f.search_field :title_or_description_or_category_cont , id: "search_field", placeholder:"小丸子童年书包"%>
            <%= button_tag type: "submit", id: "search_button" do%>
               <i class="fa fa-search" aria-hidden="true"></i>
            <% end %>
