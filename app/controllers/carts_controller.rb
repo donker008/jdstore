@@ -3,6 +3,7 @@ class CartsController < ApplicationController
     @cart = current_cart
     @immediately_cart = current_immediately_cart
     @categoies = ProductCategory.all
+    @q  = Product.ransack(params[:q])
   end
 
   def clear
