@@ -724,10 +724,14 @@ margin: 20px;
 
 .category-list .category-item > a:hover , a:active {
     color: #e35150;
-    border-bottom: #e35150;
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
     padding-bottom: 4px;
+    border-bottom: 2px solid #e35150;
+}
+
+.category-list .active{
+  color: #e35150 !important;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #e35150;
 }
 
 // search

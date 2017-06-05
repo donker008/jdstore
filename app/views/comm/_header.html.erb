@@ -25,7 +25,7 @@
 <div>
   <ul class="list-inline text-center category-list">
     <li class="category-item">
-      <%= link_to("首页", products_path) %>
+      <%= link_to("首页", products_path ,:class => "active")  %>
     </li>
     <% @categoies.each do |cate| %>
       <li class="category-item">

@@ -21,7 +21,7 @@
   $(document).ready(function() {
 
     $("#product-review-list").hide();
-    
+
     $("#tab-detail").click(function(){
       $("#product-detail-info").show();
       $("#product-review-list").hide();
@@ -35,6 +35,35 @@
       $("#tab-detail").removeClass("active");
       $("#tab-review").addClass("active");
     });
+
+    function handleHomeCategoryState() {
+      var current_category = $("#category").val();
+      var index = 0;
+      $(".category-item > a").each(function () {
+
+         if(current_category == null){
+           if(index == 0){
+             $(this).addClass("active");
+           }
+           else{
+             $(this).removeClass("active")
+           }
+          }
+          else{
+            if($(this).text() == current_category){
+              $(this).addClass("active")
+            }
+            else{
+              $(this).removeClass("active")
+            }
+          }
+          index++;
+
+      })
+
+    }
+
+    handleHomeCategoryState();
   })
   </script>
 </html>
