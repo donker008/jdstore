@@ -2,7 +2,7 @@ class FavoritesController < ApplicationController
  before_action :authenticate_user!
 
  def index
-  @favorites = current_user.favorites.order("created_at desc")
+  @favorites = current_user.favorites.order("created_at desc").paginate(:page => params[:page], :per_page => 5)
  end
 
  def show

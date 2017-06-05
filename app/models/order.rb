@@ -96,14 +96,18 @@ class Order < ApplicationRecord
 
   # class method define
   def self.hot24_products
-      where_string  = ' and  aasm_state != "order_cancelled" and aasm_state != "order_placed" '
-      orders = Order.where('created_at >= :one_day_ago ' + where_string,
+      where_string  = "and  aasm_state != 'order_cancelled' and aasm_state != 'order_placed' "
+      query = 'created_at >= :one_day_ago ' + where_string
+      orders = Order.where(query,
       :one_day_ago => Time.now - 1.days)
       if orders.blank?
-        orders = Order.where('created_at >= :one_month_ago ' + where_string,
+        query = 'created_at >= :one_month_ago ' + where_string
+        orders = Order.where(query,
         :one_month_ago => Time.now - 30.days)
       end
 
+      puts "hot24 query " + query
+      
       producthash =  Hash.new
       orders.each do | order |
         order.product_lists.each do |product|

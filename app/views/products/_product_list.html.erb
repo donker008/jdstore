@@ -1,4 +1,7 @@
 <div class="products">
+    <% unless @category.blank?%>
+    <%= hidden_field_tag :category, @category.name , id:"category" %>
+    <% end %>
     <table class="table borderless">
       <% @products.each_with_index do |product, index|%>
         <% if (index % 4) == 0 %>

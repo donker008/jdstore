@@ -1,7 +1,8 @@
-<div class="row">
+<div class="container-fluid order-page">
+  <div class="row">
     <div class="col-md-12">
       <h2>订单列表</h2>
-      <table class="table table-bordered">
+      <table class="table table-boderness">
           <thead>
             <tr>
               <th>订单编号</th>
@@ -17,7 +18,7 @@
           <tbody>
             <% @orders.each do |order| %>
               <tr>
-              
+
                 <td>
                   <%= link_to(order.token, order_path(order.token)) %>
                 </td>
@@ -47,4 +48,6 @@
           </tbody>
       </table>
     </div>
+  </div>
+
 </div>

@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     @categoies = ProductCategory.all
     @q  = Product.ransack(params[:q])
     @hot_products =  Order.hot24_products
-
+    @review = Review.new
   end
 
   def add_to_cart
@@ -68,11 +68,15 @@ class ProductsController < ApplicationController
         @favorite = Favorite.new
         @favorite.product_id = @product.id
         @favorite.user_id = current_user.id
-        @favorite.save
-        flash[:notice] = "商品收藏成功"
+        if @favorite.save
+          flash[:notice] = "商品收藏成功"
+        else
+          flash[:notice] = "商品收藏失败"
+        end
+
       end
     else
-      flash[:warning] = "商品收藏失败!"
+      flash[:warning] = "商品收藏失败"
     end
     redirect_back(fallback_location: :back)
   end
