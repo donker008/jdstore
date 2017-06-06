@@ -239,23 +239,25 @@
   margin-right: 10px;
 }
 
-.image-with-title > p {
-      display: inline-block;
-      font-size: 18px;
+.image-with-title {
+  min-width: 100px !important;
 }
 
 
-
-.list-inline > li {
-  width: 30%;
+.footer .list-inline > li {
+  width: 20% !important;
 }
 
 .footer {
   color: white;
   padding-top: 20px;
   padding-bottom: 10px;
- background-color: #414141;
- text-align: center;
+  background-color: #414141;
+  text-align: center;
+}
+
+.footer .copyright{
+  margin: 20px 0;
 }
 
 .footer > hr {
@@ -945,4 +947,8 @@ margin: 20px;
 
     .popover-content .product-list .price{
         line-height: 50px;
+    }
+
+    .popover-content .product-list .fa-times{
+      color: #333333;
     }
