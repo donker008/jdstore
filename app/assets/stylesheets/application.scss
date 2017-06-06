@@ -722,6 +722,11 @@ margin: 20px;
  .orderjs-page ,.addressJS-page .admin-categoryJS-page{
      width:800px;
  }
+
+ .usercenter-page{
+   background: #F1F3FA;
+ }
+ 
 .product-detail .preview-section {
   margin-right: 20px;
 }
@@ -967,9 +972,9 @@ A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themefores
 Licensed under MIT
 ***/
 
-body {
-  background: #F1F3FA;
-}
+// body {
+//   // background: #F1F3FA;
+// }
 
 /* Profile container */
 .profile {
