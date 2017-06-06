@@ -629,6 +629,13 @@ margin: 20px;
   background-color: #b4a078;
   margin: -21px 0px 0px 30px;
   height: 66px;
+  float: right;
+}
+
+.cart-content .btn-order > .row{
+  line-height: 66px;
+  margin: 0px !important;
+  font-size: 24px;
 }
 
 .cart-content  .btn-order  a{
@@ -920,6 +927,10 @@ margin: 20px;
     .popover-content .product-list .title{
         font-size: 14px;
         margin: 0px;
+    }
+
+    .popover-content .product-list > .row{
+      margin-bottom: 4px;
     }
 
     .popover-content .product-list .simple-info{
