@@ -17,12 +17,8 @@
             <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li>
-                <% if current_user.is_admin %>
-                  <%= link_to("所有订单", admin_orders_path) %>
-                  <%= link_to("产品分类", admin_product_categories_path) %>
-                <% else %>
-                  <%= link_to("我的订单", orders_path) %>
-                <% end %>
+
+                <%= link_to("个人中心", usercenter_index_path) %>
                 <%= link_to("我的收藏", favorites_path) %>
               </li>
               <% if current_user.is_admin? %>
