@@ -882,11 +882,12 @@ margin: 20px;
     }
 
     #my-popover-container{
-      width: 250px !important;
+      width: 370px !important;
     }
 
     .popover{
       border-radius: 0px !important;
+      max-width: 380px !important;
     }
 
     .popover .popover-content{
