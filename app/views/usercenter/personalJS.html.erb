@@ -1,5 +1,48 @@
-<div class="container-fluid personalJS-page">
-  <h2>
-    个人信息
-  </h2>
-</div>
+<div class="row">
+      <div class="col-md-10 col-md-offset-1">
+      <h2>个人信息</h2>
+      <form novalidate="novalidate" class="simple_form edit_user" id="edit_user_77" action="/account/users/77" accept-charset="UTF-8" method="post">
+        <input name="utf8" type="hidden" value="✓">
+        <input type="hidden" name="_method" value="patch">
+        <input type="hidden" name="authenticity_token" value="S2dqUA80iqxp30NyGJ6GaKuRWzOQAvuohhEcLz4SWSyIrz48Y3MInnM1gqZe8ejyuc2A01LT13R9DisCrp3UPA==">
+        <div class="form-inputs">
+          <div class="form-group string required user_name">
+            <input class="form-control string required" required="required" aria-required="true" placeholder="真實姓名" type="text" value="" name="user[name]" id="user_name">
+          </div>
+          <div class="form-group string required user_nickname">
+            <input class="form-control string required" required="required" aria-required="true" placeholder="用戶名" type="text" value="" name="user[nickname]" id="user_nickname">
+          </div>
+          <div class="gender-box">
+            <div class="form-group radio_buttons required user_gender">
+              <input type="hidden" name="user[gender]" value="">
+              <span class="radio">
+                <label for="user_gender_">
+                  <input class="radio_buttons required" required="required" aria-required="true" type="radio" value="男" checked="checked" name="user[gender]" id="user_gender_">男
+                </label>
+                </span>
+                <span class="radio">
+                  <label for="user_gender_">
+                    <input class="radio_buttons required" required="required" aria-required="true" type="radio" value="女" name="user[gender]" id="user_gender_">女
+                  </label>
+                </span>
+                </div>
+              </div>
+          <div class="form-group date required user_birthday">
+            <label class="control-label date required" for="user_birthday"><abbr title="required">*</abbr> 生日</label>
+            <div class="form-inline">
+              <input class="form-control date required" required="required" aria-required="true" type="date" name="user[birthday]" id="user_birthday">
+            </div>
+          </div>
+          <div class="form-group tel required user_phone">
+            <input class="form-control string tel required phone" required="required" aria-required="true" placeholder="电话" type="tel" value="手机号" name="user[phone]" id="user_phone">
+          </div>
+          <div class="form-group string required user_address">
+            <input class="form-control string required" required="required" aria-required="true" placeholder="地址" type="text" value="地址" name="user[address]" id="user_address">
+          </div>
+        </div>
+        <div class="form-actions">
+          <input type="submit" name="commit" value="保存" class="btn btn-default button" data-disable-with="保存">
+        </div>
+      </form>
+    </div>
+  </div>
