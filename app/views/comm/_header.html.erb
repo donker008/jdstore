@@ -50,10 +50,10 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="row price">
-                                  <div class="col-md-4">
+                                  <div class="col-md-6">
                                     ¥<%=cart_item.product.price%>
                                   </div>
-                                  <div class="col-md-4">
+                                  <div class="col-md-5">
                                     <%= link_to(remove_product_cart_path(cart_item.product), method: :post) do%>
                                       <i class="fa fa-times" aria-hidden="true"></i>
                                     <% end %>
