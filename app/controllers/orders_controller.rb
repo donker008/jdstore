@@ -5,6 +5,9 @@ class OrdersController < ApplicationController
     @orders = Order.where(:user_id => current_user.id).all.order("created_at desc")
   end
 
+  def indexJS
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc")
+  end
 
   def create
     @order =  Order.new(order_params)

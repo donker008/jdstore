@@ -45,9 +45,25 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :favorites
+  resources :favorites, :addresses,:reviews
 
-  resources :reviews
+  resources :usercenter do
+
+    collection do
+      match 'order' => 'usercenter#order', via: [:get, :post], as: :order
+      match 'address' => 'usercenter#address', via: [:get, :post], as: :address
+      match 'personal' => 'usercenter#personal', via: [:get, :post], as: :personal
+      match 'category' => 'usercenter#category', via: [:get, :post], as: :category
+    end
+
+  end
+
+
+
+  # match 'usercenter/order' => 'usercenter#order', :via => :get
+  # match 'usercenter/address' => 'usercenter#address', :via => :get
+  # match 'usercenter/personal' => 'usercenter#personal', :via => :get
+
 
   root "products#index"
 end

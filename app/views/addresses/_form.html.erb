@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <h2 class="text-center"><%=title%></h2>
+  <%= simple_form_for @address do |f|%>
+    <div class="group-form">
+      <%= f.input :name, :label => "收货人" %>
+      <%= f.input :address, :label => "收货地址" %>
+      <%= f.input :contact_info, :label => "联系方式" %>
+    </div>
+    <div class="pull-right">
+      <%=f.submit submit_title, class:"btn btn-lg btn-danger", :disable_with => "Submiting..."%>
+    </div>
+  <% end %>
+</div>

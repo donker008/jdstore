@@ -76,8 +76,34 @@
       });
     }
 
+    function handleUserCenterMenuLinkClick() {
+
+      $(document).on('click', '.profile-usermenu a', {}, function(event){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        var href = $(this).attr("href");
+        var url = window.location.origin + href;
+        console.log("1 handleUserCenterMenuLinkClick url: " + url );
+        $.ajax(
+          {
+            type: "POST",
+            url: url,
+            dataType: "html"
+          }
+        ).success(function (json) {
+          console.log("2 handleUserCenterMenuLinkClick url: " + url + " \n json: " + JSON.stringify(json));
+          eval(json);
+          
+        }).error(function (error) {
+            console.log("2 handleUserCenterMenuLinkClick url: " + url + " \n Error: " + JSON.stringify(error));
+        });
+
+      });
+    }
+
     handleHomeCategoryState();
     handleMouseOverCartIcon();
+    handleUserCenterMenuLinkClick();
   })
   </script>
 </html>

@@ -1,0 +1,70 @@
+<!--
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+-->
+<div class="container">
+    <div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="http://yanxuan.nosdn.127.net/485ff1be6912be6ae696b6d360d1b101.png" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						<%= current_user.email %>
+					</div>
+					<div class="profile-usertitle-job">
+						<%= current_user.email %>
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+            <li>
+              <%= link_to personal_usercenter_index_path ,method: :post, :remote => true do%>
+              <i class="glyphicon glyphicon-home"></i>
+              个人信息
+              <% end %>
+						</li>
+						<li class="active">
+              <%= link_to order_usercenter_index_path, method: :post , :remote => true do%>
+              <i class="glyphicon glyphicon-home"></i>
+							订单管理
+              <% end %>
+						</li>
+
+						<li>
+							<%= link_to address_usercenter_index_path ,method: :post, :remote => true do%>
+							<i class="glyphicon glyphicon-ok"></i>
+							地址管理 </a>
+              <% end %>
+						</li>
+						<li>
+              <%= link_to category_usercenter_index_path ,method: :post, :remote => true do%>
+							<i class="glyphicon glyphicon-flag"></i>
+							商品分类 </a>
+              <% end %>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+            <div class="profile-content" id="profile-content">
+              <%= render "orders/order_list" %>
+            </div>
+		</div>
+	</div>
+</div>
+<center>
+
+</center>
+<br>
+<br>
