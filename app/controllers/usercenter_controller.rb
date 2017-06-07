@@ -26,6 +26,13 @@ class UsercenterController < ApplicationController
      end
   end
 
+  def favorite
+    @favorites = Favorite.all.paginate(:page => params[:page], :per_page => 5);
+    respond_to do |format|
+       format.js
+     end
+  end
+
   def category
     @categoies = ProductCategory.all.order(:created_at).paginate(:page => params[:page], :per_page => 5);
     respond_to do |format|

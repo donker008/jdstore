@@ -45,6 +45,12 @@ Licensed under MIT
 							地址管理 </a>
               <% end %>
 						</li>
+            <li>
+							<%= link_to favorite_usercenter_index_path ,method: :post, :remote => true do%>
+							<i class="glyphicon glyphicon-ok"></i>
+							我的收藏 </a>
+              <% end %>
+						</li>
 						<li>
               <%= link_to category_usercenter_index_path ,method: :post, :remote => true do%>
 							<i class="glyphicon glyphicon-flag"></i>

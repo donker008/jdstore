@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       match 'address' => 'usercenter#address', via: [:get, :post], as: :address
       match 'personal' => 'usercenter#personal', via: [:get, :post], as: :personal
       match 'category' => 'usercenter#category', via: [:get, :post], as: :category
+      match 'favorite' => 'usercenter#favorite', via: [:get, :post], as: :favorite
     end
 
   end
