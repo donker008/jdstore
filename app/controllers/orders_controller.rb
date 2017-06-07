@@ -78,6 +78,10 @@ class OrdersController < ApplicationController
     redirect_to admin_orders_path, notice:"商品出货成功"
   end
 
+  def choose_pay_method_order
+    
+  end
+
   private
 
 

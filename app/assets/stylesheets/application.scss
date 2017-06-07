@@ -711,7 +711,7 @@ margin: 20px;
   height: auto;
 }
 
-.product-detail,.favorite-page,.product-home, .order-page, .address-page, .edit-address, .new-address{
+.product-detail,.favorite-page,.product-home, .order-page, .address-page, .edit-address, .new-address , .cart-detail{
   width:1200px;
 }
 
@@ -1079,3 +1079,86 @@ Licensed under MIT
   background: #fff;
   min-height: 460px;
 }
+
+// checkout
+.cart-detail .address-info{
+  border: 1px solid #e8e8e8;
+
+}
+
+.cart-detail .address-info .header{
+  padding-left: 21px;
+  background-color: #f5f5f5;
+  margin: 0px;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: #999;
+}
+
+.cart-detail .address-info .content{
+  margin: 0px;
+  padding: 10px 20px;
+}
+
+.cart-detail .address-info .content .default-address{
+  margin: 10px 0px;
+}
+
+.cart-detail .address-info .line{
+  width: 1px;
+  background: #ccc;
+  height: 40px;
+}
+
+.cart-detail .address-info .content .default-address .name{
+  font-size: 18px;
+  margin: 10px 0px;
+  line-height: 2;
+}
+
+.cart-detail .address-info .content .default-address .value{
+  font-size: 18px;
+  color: #666;
+}
+
+.cart-detail .address-info .content .switch-address{
+  line-height: 2;
+  font-size: 20px;
+  margin-top: -40px;
+}
+
+.cart_detail .thumbnail-info{
+
+}
+
+.cart-detail .product-list .table > thead {
+   background-color: #f5f5f5;
+   margin: 0px;
+   padding: 10px 20px;
+ }
+
+ .cart-detail .product-list{
+   margin-top: 40px;
+   border: 1px solid #e8e8e8;
+ }
+
+ .cart-detail .order-bar{
+    margin-bottom: 80px;
+    padding: 20px 0px;
+    border: 1px solid #e8e8e8;
+    background: #e8e8e8;
+ }
+
+ .cart-detail .order-bar .total-price{
+       line-height: 2;
+       font-size: 22px;
+       color: #d4282d;
+       font-weight: 700;
+       margin-left: 10px;
+       margin-top: 10px !important;
+       max-width: 100px !important;
+ }
+
+ .cart-detail .order-bar .btn-lg{
+      width: 140px;
+ }

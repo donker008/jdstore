@@ -43,9 +43,22 @@ Rails.application.routes.draw do
       post :cancel
       post :ship
     end
+    collection do
+      match 'pay_method' => 'orders#pay_method', via: [:get, :post], as: :pay_method
+    end
   end
 
-  resources :favorites, :addresses,:reviews
+  resources :favorites,:reviews
+
+  resources :addresses do
+    collection do
+      get :address_list
+    end
+
+    member do
+      post :set_default
+    end
+  end
 
   resources :usercenter do
 

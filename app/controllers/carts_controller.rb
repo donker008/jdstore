@@ -80,6 +80,10 @@ class CartsController < ApplicationController
 
   def checkout
     @order = Order.new
+    @address = Address.where(:is_default => 1).all.first
+    if @address.blank?
+      @address = Address.first
+    end
   end
 
 end

@@ -3,9 +3,6 @@ class AddressesController < ApplicationController
 
   def index
       @addresses = Address.all
-      respond_to do |format|
-        format.js
-      end
   end
 
   def new
@@ -38,6 +35,26 @@ class AddressesController < ApplicationController
     end
     redirect_to addresses_path
   end
+
+  def address_list
+    @addresses = Address.where(:user_id => current_user.id).all
+  end
+
+  def set_default
+    @address = Address.find(params[:id])
+    if !@address.blank? && @address.user_id = current_user.id
+      address_temps = Address.where(:user_id => current_user.id).all
+      address_temps.each do |adr|
+        adr.is_default = 0
+        adr.save
+      end
+
+      @address.is_default = 1
+      @address.save
+    end
+    redirect_to :back
+  end
+
 
   private
   def address_params

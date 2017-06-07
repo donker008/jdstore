@@ -1,49 +1,87 @@
-<div class="container-fluid cart_detail">
-  <div class="row">
-    <h2>购物明细</h2>
-    <table class="table table-bordered">
+<div class="container-fluid cart-detail">
+
+  <div class="row address-info">
+    <div class="row header">
+      收获信息
+    </div>
+    <div class="row content">
+      <% unless @address.blank? %>
+        <div class="row default-address">
+          <i class="fa fa-map-marker" aria-hidden="true"></i> <%= @address.address %> <%= link_to "修改", edit_address_path(@address), :class => "btn btn-sm btn-primary "%>
+        </div>
+        <div class="row detail">
+          <div class="col-md-8">
+            <span class="name">收货人 :</span> <span class="value"><%=@address.name%></span> <br />
+            <span class="name">联系方式 :</span><span class="value"><%=@address.contact_info%></span> <br />
+            <span class="name">收货地址 :</span><span class="value"><%=@address.address%></span> <br />
+          </div>
+          <div class="col-md-1">
+            <div class="line">
+            </div>
+          </div>
+          <div class="col-md-3 switch-address text-center">
+            <%= link_to "切换地址", address_list_addresses_path%>
+            <br />
+            <%= link_to "新建地址", new_address_path, :class => "btn btn-lg btn-primary"%>
+          </div>
+        </div>
+      <% else %>
+        <%= link_to "新建地址", new_address_path, :class => "btn btn-lg btn-primary"%>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row product-list">
+    <table class="table">
       <thead>
-        <th>产品</th>
-        <th>单价</th>
-        <th>数量</th>
+        <td>
+          商品信息
+        </td>
+        <td>
+          单价
+        </td>
+        <td>
+          数量
+        </td>
+        <td>
+          小计
+        </td>
+        </tr>
       </thead>
       <tbody>
-          <% current_cart.cart_items.each do |cart_item| %>
+        <% current_cart.cart_items.each do |cart_item| %>
           <tr>
-            <td><%= cart_item.product.title %></td>
-            <td><%= cart_item.product.price %></td>
-            <td><%= cart_item.quantity %></td>
+            <td>
+              <div class="thumbnail-info">
+                <%= image_tag(cart_item.product.image, :width => 50, :height => 50) %>
+                <%= cart_item.product.title %>
+              </div>
+            </td>
+            <td>
+              ¥<%=cart_item.product.price%>
+            </td>
+            <td>
+              <%=cart_item.quantity%>
+            </td>
+            <td>
+              <%=cart_item.quantity * cart_item.product.price%>
+            </td>
           </tr>
-          <% end %>
+        <% end %>
       </tbody>
     </table>
   </div>
 
-  <div class="row">
-    <span class="pull-right">总计<%= current_cart.cart_total_price %>RMB</span>
-  </div>
-
-  <div class="oroder-form">
-
-    <%= simple_form_for @order do |f| %>
-    <h2>订单信息</h2>
-
-
-    <div class="row">
-      <h3>订购人</h3>
-      <hr />
-      <%= f.input :billing_name %>
-      <%= f.input :billing_address %>
+  <div class="row order-bar">
+    <div class="col-md-2 col-md-offset-10">
+      <div class="row">
+          <span>应付总额:</span> <span class="total-price">¥<%=current_cart.cart_total_price%></span>
+      </div>
+      <div class="row">
+        <% if !@order.blank? %>
+          <%=link_to "去付款", pay_method_orders_path, class:"btn btn-lg btn-danger"%>
+        <% end %>
+      </div>
     </div>
-    <div class="row">
-      <h3>收货人</h3>
-      <hr />
-      <%= f.input :shipping_name %>
-      <%= f.input :shipping_address %>
-    </div>
-      <%= f.submit "生成订单", class: "btn btn-lg btn-danger pull-right" %>
-    <% end %>
-
   </div>
-
 </div>
