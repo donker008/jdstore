@@ -109,9 +109,48 @@
       });
     }
 
+    function handleAddressListModalEvents() {
+      $("#btn-confirm-address-model").click(function(){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        $("#fsModal").modal("hide");
+      });
+
+      $("#btn-cancel-address-model").click(function(){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        $("#fsModal").modal("hide");
+      });
+
+      $("table.select-address-list > tbody > tr").click(function(){
+          var id = $(this).attr('id');
+          $("#current_address_id").text(id);
+          //remove checkbox
+          $("table.select-address-list > tbody > tr").each(function(){
+            $(this).removeClass("active");
+            var  i = $(this).find("i");
+            $(i).remove();
+            console.log("i remove" + JSON.stringify(i));
+          });
+          var tr = $(".select-address-list").find(id);
+          $(tr).addClass("active");
+          var checkbox = $(tr).find(".select-address-list-checkbox");
+          checkbox.append('<i class="fa fa-check-square icon" aria-hidden="true"></i>')
+          console.log("tr: " + $(tr).attr("id"));
+      });
+    }
+
+    function handlePayNowButtonEvent() {
+      $("#btn-pay-now").click(function(){
+          alert("pay now");
+      });
+    }
+
     handleHomeCategoryState();
     handleMouseOverCartIcon();
     handleUserCenterMenuLinkClick();
+    handleAddressListModalEvents();
+    handlePayNowButtonEvent();
   })
   </script>
 </html>

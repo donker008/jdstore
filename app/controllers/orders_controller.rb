@@ -78,12 +78,35 @@ class OrdersController < ApplicationController
     redirect_to admin_orders_path, notice:"商品出货成功"
   end
 
-  def choose_pay_method_order
-    
+  def pay_method
+      do_create_order
+      @order = do_create_order
   end
 
   private
 
+  def do_create_order
+    @order = Order.new
+    @order.shipping_name = params[:name];
+    @order.shipping_address = params[:address];
+    @order.user = current_user
+    @order.total = current_cart.cart_total_price
+    if @order.save
+        current_cart.cart_items.each do |cart_item|
+        product_list = ProductList.new
+        product_list.order = @order
+        product_list.product_name = cart_item.product.title
+        product_list.product_price = cart_item.product.price
+        product_list.quantity  = cart_item.quantity
+        product_list.save
+        current_cart.clear_cart
+      end
+    end 
+  end
+
+  def address_params
+    params.require(:order).permit(:name, :address, :contact_info);
+  end
 
   def order_params
     params.require(:order).permit(:billing_name, :billing_address, :shipping_name, :shipping_address,);

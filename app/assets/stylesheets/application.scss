@@ -711,7 +711,7 @@ margin: 20px;
   height: auto;
 }
 
-.product-detail,.favorite-page,.product-home, .order-page, .address-page, .edit-address, .new-address , .cart-detail{
+.product-detail,.favorite-page,.product-home, .order-page, .address-page, .edit-address, .new-address , .cart-detail, .payment-page{
   width:1200px;
 }
 
@@ -1159,6 +1159,115 @@ Licensed under MIT
        max-width: 100px !important;
  }
 
+ .payment-page .total-price{
+       line-height: 2;
+       font-size: 22px;
+       color: #d4282d;
+       font-weight: 700;
+       margin-left: 10px;
+       margin-top: 10px !important;
+       max-width: 100px !important;
+ }
+
  .cart-detail .order-bar .btn-lg{
       width: 140px;
  }
+
+
+ .modal {
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   overflow: hidden;
+ }
+
+ .modal-dialog {
+   position: fixed;
+   margin: 0;
+   width: 40%;
+   height: 40%;
+   padding: 0;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) !important;
+ }
+
+ .modal-content {
+   position: absolute;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   border: 2px solid #3c7dcf;
+   border-radius: 0;
+   box-shadow: none;
+ }
+
+.switch-address .btn-modal{
+  border: 0px;
+  background: transparent;
+  color: #337ab7;
+}
+ .modal-body {
+   position: absolute;
+   top: 50px;
+   bottom: 60px;
+   width: 100%;
+   font-weight: 300;
+   overflow: auto;
+ }
+
+ .modal-footer {
+   position: absolute;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   height: 60px;
+   padding: 10px;
+   background: #f1f3f5;
+ }
+
+ .cart-detail .icon{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: inline-block;
+ }
+ .cart-detail .select-address-list .active{
+   border: 2px solid red;
+   padding: 19px 24px;
+ }
+
+ .cart-detail .borderless{
+   border: none;
+ }
+
+ // payment
+.payment-page .order-number{
+    color: #999!important;
+    font-size: 16px;
+ }
+
+ .payment-page .header {
+   padding-left: 21px;
+   background-color: #f5f5f5;
+ }
+
+  .payment-page .footer{
+    background: white;
+  }
+
+.payment-page .content{
+  border: 1px solid #d7d7d7;
+}
+
+.payment-page .content .header{
+  margin: 0;
+  padding: 10px;
+}
+
+.payment-page .content .pay-method{
+  margin: 10px 0;
+}

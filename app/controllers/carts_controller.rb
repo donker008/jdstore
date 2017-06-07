@@ -84,6 +84,7 @@ class CartsController < ApplicationController
     if @address.blank?
       @address = Address.first
     end
+    @allAddress = Address.where(:user_id => current_user.id).all
   end
 
 end

@@ -20,7 +20,12 @@
             </div>
           </div>
           <div class="col-md-3 switch-address text-center">
-            <%= link_to "切换地址", address_list_addresses_path%>
+
+            <button class="btn-modal"
+                    data-toggle="modal"
+                    data-target="#fsModal">
+              切换地址
+            </button>
             <br />
             <%= link_to "新建地址", new_address_path, :class => "btn btn-lg btn-primary"%>
           </div>
@@ -85,3 +90,64 @@
     </div>
   </div>
 </div>
+
+<!-- modal -->
+<div id="fsModal"
+     class="modal animated bounceIn"
+     tabindex="-1"
+     role="dialog"
+     aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+  <!-- dialog -->
+  <div class="modal-dialog">
+
+    <!-- content -->
+    <div class="modal-content">
+      <!-- body -->
+      <div class="modal-header">
+        选择地址
+      </div>
+      <div class="modal-body">
+        <%= hidden_field_tag :current_address_id, @address.id %>
+        <% unless @allAddress.blank?%>
+          <table class="table select-address-list">
+            <tbody>
+              <% @allAddress.each do |adr|%>
+
+                 <% if @address.id == adr.id %>
+                    <tr class="active" id='<%=adr.id%>' >
+                  <% else %>
+                    <tr id='<%=adr.id%>' >
+                  <% end %>
+                        <td>
+                          <%=adr.name%>
+                        </td>
+                        <td>
+                          <%=adr.address%>
+                        </td>
+                        <td class="select-address-list-checkbox">
+                          <% if @address.id == adr.id %>
+                            <i class="fa fa-check-square icon" aria-hidden="true"></i>
+                          <% end %>
+                        </td>
+                    </tr>
+              <% end %>
+            </tbody>
+
+          </table>
+        <% end %>
+      </div>
+      <!-- body -->
+      <div class="modal-footer">
+        <a class = "btn btn-lg btn-danger" id = "btn-confirm-address-model">确定</a>
+        <a class ="btn btn-lg btn-danger" id = "btn-cancel-address-model">取消</a>
+      </div>
+    </div>
+    <!-- content -->
+
+  </div>
+  <!-- dialog -->
+
+</div>
+<!-- modal -->
