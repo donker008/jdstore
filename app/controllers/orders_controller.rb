@@ -2,11 +2,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc")
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :perpage => 5)
   end
 
   def indexJS
-    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc")
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :perpage => 5)
   end
 
   def create
@@ -87,11 +87,14 @@ class OrdersController < ApplicationController
 
   def do_create_order
     @order = Order.new
-    @order.shipping_name = params[:name];
-    @order.shipping_address = params[:address];
+    @order.shipping_name = current_address.name
+    @order.shipping_address = current_address.address
+    @order.billing_name = current_address.name
+    @order.billing_address = current_address.address
     @order.user = current_user
     @order.total = current_cart.cart_total_price
     if @order.save
+
         current_cart.cart_items.each do |cart_item|
         product_list = ProductList.new
         product_list.order = @order
@@ -101,7 +104,12 @@ class OrdersController < ApplicationController
         product_list.save
         current_cart.clear_cart
       end
-    end 
+
+        puts "do_create_order ok"
+
+    else
+      puts "do_create_order error: " + @order.errors.full_messages.to_s
+    end
   end
 
   def address_params

@@ -6,14 +6,14 @@ class UsercenterController < ApplicationController
   end
 
   def order
-    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc")
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :per_page => 5)
     respond_to do |format|
       format.js
     end
   end
 
   def address
-    @addresses = Address.all
+    @addresses = Address.all.paginate(:page => params[:page], :per_page => 5)
     respond_to do |format|
        format.js
      end
@@ -35,6 +35,7 @@ class UsercenterController < ApplicationController
 
   def category
     @categoies = ProductCategory.all.order(:created_at).paginate(:page => params[:page], :per_page => 5);
+    puts "category: " + @categoies.inspect
     respond_to do |format|
       format.js
     end

@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-      @addresses = Address.all
+      @addresses = Address.all.paginate(:page => params[:page], :perpage => 5)
   end
 
   def new
@@ -37,7 +37,7 @@ class AddressesController < ApplicationController
   end
 
   def address_list
-    @addresses = Address.where(:user_id => current_user.id).all
+    @addresses = Address.where(:user_id => current_user.id).all.paginate(:page => params[:page], :perpage => 5)
   end
 
   def set_default

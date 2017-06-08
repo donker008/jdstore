@@ -1,3 +1,12 @@
 <div class="container-fluid orderjs-page">
 <%= render "orders/order_list" %>
+
+<div class="row text-center">
+  <div class="row">
+    <div class="flickr_pagination">
+      <%= js_will_paginate @orders, :container => false %>
+    </div>
+  </div>
+</div>
+
 </div>

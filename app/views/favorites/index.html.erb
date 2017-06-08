@@ -1,4 +1,11 @@
 
 <div class="container-fluid favorite-page">
   <%= render "favoritelist"%>
+  <div class="row text-center">
+    <div class="row">
+      <div class="flickr_pagination">
+        <%= will_paginate @favorites, :container => false %>
+      </div>
+    </div>
+  </div>
 </div>

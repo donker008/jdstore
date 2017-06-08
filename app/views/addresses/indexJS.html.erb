@@ -1,3 +1,10 @@
 <div class="container-fluid addressJS-page">
-<%= render "addresses/addresslist"%>
+  <%= render "addresses/addresslist"%>
+  <div class="row text-center">
+    <div class="row">
+      <div class="flickr_pagination">
+        <%= js_will_paginate  @addresses, :container => false %>
+      </div>
+    </div>
+  </div>
 </div>

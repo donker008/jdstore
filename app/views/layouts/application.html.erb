@@ -84,6 +84,13 @@
       });
     }
 
+    function handleUserCenterPaginateLinks(){
+  
+      var pagination = $(".admin-categoryJS-page").find(".flickr_pagination");
+        $(pagination).find("a").attr('data-remote', 'true');
+        console.log('\n\n handleUserCenterPaginateLinks: ' + JSON.stringify($(pagination).find("a")));
+    }
+
     function handleUserCenterMenuLinkClick() {
 
       $(document).on('click', '.profile-usermenu a', {}, function(event){
@@ -91,7 +98,6 @@
         event.stopImmediatePropagation();
         var href = $(this).attr("href");
         var url = window.location.origin + href;
-        console.log("1 handleUserCenterMenuLinkClick url: " + url );
         $.ajax(
           {
             type: "POST",
@@ -99,8 +105,8 @@
             dataType: "html"
           }
         ).success(function (json) {
-          console.log("2 handleUserCenterMenuLinkClick url: " + url + " \n json: " + JSON.stringify(json));
-          eval(json);
+          console.log("1 handleUserCenterMenuLinkClick url: " + url + " \n json: " + JSON.stringify(json));
+          handleUserCenterPaginateLinks();
 
         }).error(function (error) {
             console.log("2 handleUserCenterMenuLinkClick url: " + url + " \n Error: " + JSON.stringify(error));
@@ -146,11 +152,14 @@
       });
     }
 
+
+
     handleHomeCategoryState();
     handleMouseOverCartIcon();
     handleUserCenterMenuLinkClick();
     handleAddressListModalEvents();
     handlePayNowButtonEvent();
+
   })
   </script>
 </html>

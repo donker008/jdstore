@@ -563,6 +563,31 @@ margin: 20px;
   display: inline-block;
 }
 
+.cart-content .m-empty .row{
+  margin: 20px;
+}
+
+.cart-content .m-empty .msg{
+  font-size: 20px;
+  color: #aaa;;
+}
+.cart-content .fa-shopping-cart{
+  font-size: 40px;
+  color: #e35150;
+}
+
+.cart-content .btn-primary{
+  background: #e35150;
+  font-size: 24px;
+  border: 0px;
+  width: 150p
+}
+
+.cart-content .btn-primary:active{
+  background: rgba(227, 81, 80, 0.87);
+}
+
+
 .inner-item .adjust-quantity{
   padding: 0px;
 }
