@@ -85,7 +85,7 @@
     }
 
     function handleUserCenterPaginateLinks(){
-  
+
       var pagination = $(".admin-categoryJS-page").find(".flickr_pagination");
         $(pagination).find("a").attr('data-remote', 'true');
         console.log('\n\n handleUserCenterPaginateLinks: ' + JSON.stringify($(pagination).find("a")));
@@ -106,7 +106,7 @@
           }
         ).success(function (json) {
           console.log("1 handleUserCenterMenuLinkClick url: " + url + " \n json: " + JSON.stringify(json));
-          handleUserCenterPaginateLinks();
+          // handleUserCenterPaginateLinks();
 
         }).error(function (error) {
             console.log("2 handleUserCenterMenuLinkClick url: " + url + " \n Error: " + JSON.stringify(error));
@@ -116,13 +116,13 @@
     }
 
     function handleAddressListModalEvents() {
-      $("#btn-confirm-address-model").click(function(){
+      $("#btn-confirm-address-model").click(function(event){
         event.preventDefault();
         event.stopImmediatePropagation();
         $("#fsModal").modal("hide");
       });
 
-      $("#btn-cancel-address-model").click(function(){
+      $("#btn-cancel-address-model").click(function(event){
         event.preventDefault();
         event.stopImmediatePropagation();
         $("#fsModal").modal("hide");
@@ -152,14 +152,167 @@
       });
     }
 
+    function handleCartListEvent() {
 
+      // cheakbox event
+      var checkall =  $(".cart-content #check-all");
+      $(checkall).on("change", function(){
+          var bChecked = $(this).prop('checked');
+          setCheckallButtonStateForCartList(bChecked);
+      });
 
+      $(".cart-content .m-boby .item").find("input").each(function(){
+        $(this).change(function(){
+            if(false == $(this).prop('checked')){
+              $(".cart-content #check-all").prop("checked",false);
+            }
+            updateSelectedProductInfo("已选("+selectedProductCount()+")");
+        });
+      });
+
+      //order event
+      var btn_order = $('.cart-content #btn-order-it');
+      $(btn_order).on("click", function(event){
+
+          if(!hasCartItemSelected()){
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            alert("下单前，请选择要购买的商品");
+          }
+          else{
+            if(hasUnselectedItems()){
+              event.preventDefault();
+              event.stopImmediatePropagation();
+              var href = $(this).prop('href')
+              $.ajax(
+                {
+                  type: "POST",
+                  url: href,
+                  data:{"product_ids":selectedCartItemIds()},
+                  dataType: "html"
+                }
+              ).success(function(result){
+                  console.log("success : btn-order-it: " + result);
+                  //  $("html").html(result);
+                  var newDoc = document.open("text/html", "replace");
+                  newDoc.write(result);
+                  newDoc.close();
+              })
+              .error(function(error){
+                  console.log("error : btn-order-it: " + result);
+              });
+            }
+          }
+      });
+    }
+
+    function setCheckallButtonStateForCartList(checked){
+      $(".cart-content .m-boby .item").find("input").each(function(){
+          $(this).prop('checked', checked);
+      });
+      updateSelectedProductInfo("已选("+selectedProductCount()+")");
+    }
+
+    function hasCartItemSelected() {
+      var bret = false;
+      var checkall =  $(".cart-content #check-all");
+      if($(checkall).prop('checked')== true){
+        bret =  true;
+      }
+
+      $(".cart-content .m-boby .item").find("input").each(function(){
+        if($(this).prop('checked') == true){
+          bret = true;
+          return;
+        }
+      });
+      return bret;
+    }
+
+    function hasUnselectedItems() {
+      var bret = false;
+      $(".cart-content .m-boby .item").find("input").each(function(){
+        if($(this).prop('checked') == false){
+          bret = true;
+          return;
+        }
+      });
+      return bret;
+    }
+
+    function selectedCartItemIds(){
+      var itemIds =[];
+      $(".cart-content .m-boby .item").find("input").each(function(){
+        if($(this).prop('checked') == true){
+          itemIds.push($(this).prop('id'));
+        }
+      });
+      return itemIds;
+    }
+
+    function updateSelectedProductInfo(str) {
+        $("#select-info").text(str);
+    }
+
+    function selectedProductCount(){
+      var count = 0;
+      $(".cart-content .m-boby .item").find("input").each(function(){
+          if($(this).prop('checked')){
+            count++;
+          }
+      });
+      return count;
+    }
+
+    function insertParam(key, value){
+      key = encodeURI(key);
+      value = encodeURI(value);
+      var kvp = document.location.search.substr(1).split('&');
+      var i=kvp.length;
+      var x;
+      while(i--)
+      {
+          x = kvp[i].split('=');
+
+          if (x[0]==key)
+          {
+              x[1] = value;
+              kvp[i] = x.join('=');
+              break;
+          }
+      }
+
+      if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+      //this will reload the page, it's likely better to store this until finished
+      document.location.search = kvp.join('&');
+    }
+
+    function reloadOrderForUserCenter() {
+      if(window.location.pathname =="/usercenter"){
+        var url = window.location.href + '/order';
+        $.ajax(
+          {
+            type: "POST",
+            url: url,
+            dataType: "html"
+          }
+        ).success(function (json) {
+          console.log("1 reloadOrderForUserCenter url: " + url + " \n json: " + JSON.stringify(json));
+          eval(json);
+          
+        }).error(function (error) {
+            console.log("2 reloadOrderForUserCenter url: " + url + " \n Error: " + JSON.stringify(error));
+        });
+      }
+    }
     handleHomeCategoryState();
     handleMouseOverCartIcon();
     handleUserCenterMenuLinkClick();
     handleAddressListModalEvents();
     handlePayNowButtonEvent();
-
+    handleCartListEvent();
+    reloadOrderForUserCenter();
   })
   </script>
 </html>
