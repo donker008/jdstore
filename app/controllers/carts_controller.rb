@@ -81,9 +81,9 @@ class CartsController < ApplicationController
     end
 
     @order = Order.new
-    @address = Address.where(:is_default => 1).all.first
+    @address = Address.where(:is_default => 1, :user_id => current_user.id).all.first
     if @address.blank?
-      @address = Address.first
+       @address = Address.where(:user_id => current_user.id).all.first
     end
     @allAddress = Address.where(:user_id => current_user.id).all
   end

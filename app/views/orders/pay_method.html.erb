@@ -4,10 +4,10 @@
  </h2>
  <div class="row">
    <div class="col-md-6">
-     <span class="order-number">订单号：###</span>
+     <span class="order-number">订单号: </span><span class="order-number" id="order-number"><%=@order.token%></span>
    </div>
    <div class="col-md-6">
-     实付：<span class="total-price">¥1000</span>
+     实付：<span class="total-price">¥<%=@order.total%></span>
    </div>
  </div>
  <div class="row content">

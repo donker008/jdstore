@@ -153,8 +153,39 @@
     }
 
     function handlePayNowButtonEvent() {
-      $("#btn-pay-now").click(function(){
-          alert("pay now");
+      $("#btn-pay-now").click(function(event){
+          event.preventDefault();
+          event.stopImmediatePropagation();
+
+          var paymethod = ''
+          if($("#pay_zhifubao").prop('checked')){
+            paymethod = "alipay";
+          }
+          else if($("#pay_wechat").prop('checked')){
+            paymethod = "wechat";
+          }
+          else if($("#pay_visa").prop('checked')){
+            paymethod = "visa";
+          }
+          var myurl = window.location.origin + '/orders/pay_now';
+          var orderToken = $('.payment-page #order-number').text();
+
+          console.log(myurl);
+          $.ajax(
+            {
+              type: "POST",
+              url:myurl,
+              data:{'paymethod':paymethod, 'id':orderToken},
+              dataType: "text"
+            }
+          ).success(function(json){
+              console.log("[handlePayNowButtonEvent] success url: " + myurl + "\n json: " + json);
+              var myurl = window.location.origin + '/orders/'+orderToken;
+              window.open(myurl, '_self');
+          }).error(function(error){
+              console.log("[handlePayNowButtonEvent] error url: " + myurl + "\n json: " + json);
+          });
+
       });
     }
 

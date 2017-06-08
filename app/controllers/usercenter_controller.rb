@@ -40,4 +40,14 @@ class UsercenterController < ApplicationController
       format.js
     end
   end
+
+  def product
+    @products = Product.all.order(:created_at).paginate(:page => params[:page], :per_page =>per_page);
+    @categoies = ProductCategory.all
+    @isJSMode = 1
+    puts "product: " + @products.inspect
+    respond_to do |format|
+      format.js
+    end
+  end
 end

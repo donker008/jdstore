@@ -4,7 +4,7 @@ class Admin::ProductCategoriesController < ApplicationController
   layout "admin"
 
   def index
-    @categoies = ProductCategory.all.order(:created_at).paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage)
+    @categoies = ProductCategory.all.order(:created_at).paginate(:page => params[:page], :per_page => per_page)
   end
 
   def new

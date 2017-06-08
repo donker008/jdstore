@@ -2,7 +2,7 @@
 
   <div class="row address-info">
     <div class="row header">
-      收获信息
+      收货信息
     </div>
     <div class="row content">
       <% unless @address.blank? %>
@@ -109,7 +109,12 @@
         选择地址
       </div>
       <div class="modal-body">
-        <%= hidden_field_tag :current_address_id, @address.id %>
+        <% if !@address.blank? %>
+          <%= hidden_field_tag :current_address_id,  @address.id %>
+        <% else %>
+          <%= hidden_field_tag :current_address_id, '' %>
+        <% end %>
+
         <% unless @allAddress.blank?%>
           <table class="table select-address-list">
             <tbody>

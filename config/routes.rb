@@ -43,9 +43,11 @@ Rails.application.routes.draw do
       post :pay
       post :cancel
       post :ship
+
     end
     collection do
       match 'pay_method' => 'orders#pay_method', via: [:get, :post], as: :pay_method
+      match 'pay_now' => 'orders#pay_now', via:[:get, :post], as: :pay_now
     end
   end
 
@@ -69,6 +71,7 @@ Rails.application.routes.draw do
       match 'personal' => 'usercenter#personal', via: [:get, :post], as: :personal
       match 'category' => 'usercenter#category', via: [:get, :post], as: :category
       match 'favorite' => 'usercenter#favorite', via: [:get, :post], as: :favorite
+      match 'product' => 'usercenter#product', via: [:get, :post], as: :product
     end
 
   end
