@@ -2,18 +2,18 @@ class UsercenterController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc")
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :per_page => per_page)
   end
 
   def order
-    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage)
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :per_page => per_page)
     respond_to do |format|
       format.js
     end
   end
 
   def address
-    @addresses = Address.all.paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage)
+    @addresses = Address.all.paginate(:page => params[:page], :per_page => per_page)
     respond_to do |format|
        format.js
      end
@@ -27,14 +27,14 @@ class UsercenterController < ApplicationController
   end
 
   def favorite
-    @favorites = Favorite.all.paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage);
+    @favorites = Favorite.all.paginate(:page => params[:page], :per_page => per_page);
     respond_to do |format|
        format.js
      end
   end
 
   def category
-    @categoies = ProductCategory.all.order(:created_at).paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage);
+    @categoies = ProductCategory.all.order(:created_at).paginate(:page => params[:page], :per_page =>per_page);
     puts "category: " + @categoies.inspect
     respond_to do |format|
       format.js

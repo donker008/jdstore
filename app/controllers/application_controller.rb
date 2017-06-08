@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     @current_address ||= find_address
   end
 
+  def per_page
+      5
+  end
+
   private
 
   def find_cart

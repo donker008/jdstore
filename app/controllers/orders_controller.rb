@@ -2,11 +2,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :perpage => 5)
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :perpage => per_page)
   end
 
   def indexJS
-    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :perpage => 5)
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :perpage => per_page)
   end
 
   def create
