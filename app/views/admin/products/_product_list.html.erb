@@ -19,7 +19,11 @@
   </thead>
 
   <tbody>
-      <%= render :partial => 'productitem', :collection => @products, as: :product %>
+      <% if @isJSMode.blank? %>
+        <%= render :partial => 'productitem', :collection => @products, as: :product %>
+      <% else %>
+        <%= render :partial => 'admin/products/productitem', :collection => @products, as: :product %>
+      <% end %>
   </tbody>
 
 </table>

@@ -83,7 +83,7 @@ class Cart < ApplicationRecord
               return true
           end
       end
-    end
+  end
     return false
   end
 

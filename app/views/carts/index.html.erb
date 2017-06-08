@@ -1,7 +1,7 @@
 <div class="container cart-content">
   <div class="header row item-title">
     <div class="col-md-1 ">
-      <input type="checkbox" id="check-all"/> 全选
+      <input type="checkbox" id="check-all" checked="true"/> 全选
     </div>
     <div class="col-md-4">
       商品信息
@@ -24,7 +24,7 @@
 
         <div class="inner-item col-md-11">
           <div class="col-md-1 cell">
-            <input type="checkbox" id="check_" + '<%=cart_item.id%>'/>
+            <input type="checkbox" checked="true" id="<%=cart_item.product.id%>"/>
           </div>
           <div class="col-md-2">
             <%= link_to(image_tag(cart_item.product.image, :width => 80, :height => 80), product_path(cart_item.product)) %>
@@ -60,9 +60,16 @@
             <span>¥<%=cart_item.quantity* cart_item.product.price%></span>
           </div>
           <div class="col-md-1 cell text-right">
-            <%= link_to(remove_immediately_product_cart_path(cart_item.product), method: :post) do%>
-              <i class="fa fa-times" aria-hidden="true"></i>
+            <% if current_immediately_cart.available%>
+              <%= link_to(remove_immediately_product_cart_path(cart_item.product), method: :post) do%>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end %>
+            <% else%>
+              <%= link_to(remove_product_cart_path(cart_item.product), method: :post) do%>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end %>
             <% end %>
+
           </div>
         </div>
       </div>
@@ -85,9 +92,9 @@
   <div class="footer">
     <div class="col-md-2 checkbox">
       <% if @cart.cart_items.blank? %>
-        <input type="checkbox" id="check-all"/> 已选(0)
+        <span id="select-info">已选(0)</span>
       <% else %>
-        <input type="checkbox" id="check-all"/> 已选(<%=get_current_cart.cart_items.size %>)
+       <span id="select-info">已选(<%=get_current_cart.cart_items.size %>)</span>
       <% end %>
     </div>
     <div class="col-md-2 ">
@@ -102,7 +109,7 @@
     </div>
     <div class="col-md-2 btn-order" id="btn-order">
       <div class="row">
-        <%= link_to("下单", checkout_carts_path, method: :post)%>
+        <%= link_to("下单", checkout_carts_path, method: :post, id: "btn-order-it")%>
       </div>
 
     </div>
