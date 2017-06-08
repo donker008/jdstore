@@ -28,32 +28,32 @@ Licensed under MIT
 					<ul class="nav">
             <li>
               <%= link_to personal_usercenter_index_path ,method: :post, :remote => true do%>
-              <i class="glyphicon glyphicon-home"></i>
+              <i class="glyphicon glyphicon-user"></i>
               个人信息
               <% end %>
 						</li>
 						<li class="active">
               <%= link_to order_usercenter_index_path, method: :post , :remote => true do%>
-              <i class="glyphicon glyphicon-home"></i>
+              <i class="glyphicon glyphicon-th-list"></i>
 							订单管理
               <% end %>
 						</li>
 
 						<li>
 							<%= link_to address_usercenter_index_path ,method: :post, :remote => true do%>
-							<i class="glyphicon glyphicon-ok"></i>
+							<i class="glyphicon glyphicon-map-marker"></i>
 							地址管理 </a>
               <% end %>
 						</li>
             <li>
 							<%= link_to favorite_usercenter_index_path ,method: :post, :remote => true do%>
-							<i class="glyphicon glyphicon-ok"></i>
+							<i class="glyphicon glyphicon-heart"></i>
 							我的收藏 </a>
               <% end %>
 						</li>
 						<li>
               <%= link_to category_usercenter_index_path ,method: :post, :remote => true do%>
-							<i class="glyphicon glyphicon-flag"></i>
+							<i class="glyphicon glyphicon-align-justify"></i>
 							商品分类 </a>
               <% end %>
 						</li>
