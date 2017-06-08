@@ -6,14 +6,14 @@ class UsercenterController < ApplicationController
   end
 
   def order
-    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :per_page => 5)
+    @orders = Order.where(:user_id => current_user.id).all.order("created_at desc").paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage)
     respond_to do |format|
       format.js
     end
   end
 
   def address
-    @addresses = Address.all.paginate(:page => params[:page], :per_page => 5)
+    @addresses = Address.all.paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage)
     respond_to do |format|
        format.js
      end
@@ -27,14 +27,14 @@ class UsercenterController < ApplicationController
   end
 
   def favorite
-    @favorites = Favorite.all.paginate(:page => params[:page], :per_page => 5);
+    @favorites = Favorite.all.paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage);
     respond_to do |format|
        format.js
      end
   end
 
   def category
-    @categoies = ProductCategory.all.order(:created_at).paginate(:page => params[:page], :per_page => 5);
+    @categoies = ProductCategory.all.order(:created_at).paginate(:page => params[:page], :per_page => Rails.configuration.x.paginate.perpage);
     puts "category: " + @categoies.inspect
     respond_to do |format|
       format.js
