@@ -44,6 +44,7 @@ gem 'figaro'
 gem "font-awesome-rails"
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'will_paginate', '~> 3.1.0'
+gem 'intercom-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
