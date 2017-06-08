@@ -94,6 +94,12 @@
     function handleUserCenterMenuLinkClick() {
 
       $(document).on('click', '.profile-usermenu a', {}, function(event){
+
+        // change active item
+        $('.profile-usermenu li').each(function(){
+          $(this).removeClass("active");
+        });
+        $(this).parent().addClass("active");
         event.preventDefault();
         event.stopImmediatePropagation();
         var href = $(this).attr("href");
@@ -300,12 +306,13 @@
         ).success(function (json) {
           console.log("1 reloadOrderForUserCenter url: " + url + " \n json: " + JSON.stringify(json));
           eval(json);
-          
+
         }).error(function (error) {
             console.log("2 reloadOrderForUserCenter url: " + url + " \n Error: " + JSON.stringify(error));
         });
       }
     }
+
     handleHomeCategoryState();
     handleMouseOverCartIcon();
     handleUserCenterMenuLinkClick();
