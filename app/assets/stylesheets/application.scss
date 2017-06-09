@@ -736,7 +736,7 @@ margin: 20px;
   height: auto;
 }
 
-.product-detail,.favorite-page,.product-home, .order-page, .address-page, .edit-address, .new-address , .cart-detail, .payment-page{
+.product-detail,.favorite-page,.product-home, .order-page, .address-page, .edit-address, .new-address , .cart-detail, .payment-page, .upload-avatar-page{
   width:1200px;
 }
 
@@ -758,6 +758,37 @@ margin: 20px;
 .usercenter-page .onffline-text{
       color: #d33;
 }
+
+.usercenter-page .fa-camera{
+position: absolute;
+font-size: 40px;
+padding-top: 80px;
+padding-left: 100px;
+}
+.upload-avatar-page .upload{
+  margin: 40px;
+}
+
+.profile-userpic img{
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover;
+}
+
+.upload-avatar-page img{
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover;
+}
+
+.upload-avatar-page .form-group .control-label{
+  margin-top: 20px;
+}
+
+.upload-avatar-page .form-group #user_avatar{
+  margin: 30px 0;
+}
+
 .product-detail .preview-section {
   margin-right: 20px;
 }

@@ -1,0 +1,15 @@
+<div class="container-fluid upload-avatar-page">
+
+  <div class="row upload">
+    <h2>上传头像</h2>
+    <hr />
+    <%=image_tag(@user.avatar, class: "img-circle")%>
+    <div class="group-from">
+      <%= simple_form_for @user, url: usercenter_do_upload_user_avatar_path, method: :post do |f| %>
+        <%= f.input :avatar , label: "请选择图片上传"%>
+        <hr />
+        <%= f.submit "上传头像" , :class => "btn btn-lg btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+</div>

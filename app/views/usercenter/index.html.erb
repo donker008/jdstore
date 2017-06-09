@@ -8,14 +8,23 @@ Licensed under MIT
 		<div class="col-md-3">
 			<div class="profile-sidebar">
 				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-					<img src="http://yanxuan.nosdn.127.net/485ff1be6912be6ae696b6d360d1b101.png" class="img-responsive" alt="">
+				<div class="profile-userpic text-center">
+          <%= link_to usercenter_upload_user_avatar_path, method: :post do%>
+          <i class="fa fa-camera" aria-hidden="true"></i>
+          <% end %>
+
+          <% if current_user.avatar.blank? %>
+            <%=image_tag("http://yanxuan.nosdn.127.net/485ff1be6912be6ae696b6d360d1b101.png", :class=>"img-circle")%>
+          <% else %>
+            <%=image_tag(current_user.avatar, :class=>"img-circle")%>
+          <% end %>
+
 				</div>
 				<!-- END SIDEBAR USERPIC -->
 				<!-- SIDEBAR USER TITLE -->
 				<div class="profile-usertitle">
 					<div class="profile-usertitle-name">
-						<%= current_user.email %>
+            <%= current_user.user_display_name %>
 					</div>
 					<div class="profile-usertitle-job">
 						<%= current_user.email %>

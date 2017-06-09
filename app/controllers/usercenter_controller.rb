@@ -79,8 +79,25 @@ class UsercenterController < ApplicationController
     redirect_to :back;
   end
 
+  def upload_user_avatar
+    @user = current_user
+  end
+
+  def do_upload_user_avatar
+    if current_user.update(user_avartar_params)
+      flash[:notice] = "更新头像成功"
+    else
+      flash[:notice] = "更新头像失败"
+    end
+    redirect_to usercenter_index_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:name, :nick_name, :sex, :birthday, :phone, :address);
+  end
+
+  def user_avartar_params
+    params.require(:user).permit(:avatar);
   end
 end

@@ -84,6 +84,8 @@ Rails.application.routes.draw do
 
 
   post "usercenter/update_user_info" => "usercenter#update_user_info"
+  post "usercenter/upload_user_avatar" =>"usercenter#upload_user_avatar"
+  post "usercenter/do_upload_user_avatar" =>"usercenter#do_upload_user_avatar"
 
   # match 'usercenter/order' => 'usercenter#order', :via => :get
   # match 'usercenter/address' => 'usercenter#address', :via => :get
