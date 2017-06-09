@@ -3,7 +3,22 @@
   <td><%= product.description %></td>
   <td><%= product.price %></td>
   <td><%= product.quantity %></td>
-  <td><%= link_to("edit", edit_admin_product_path(product)) %></td>
-  <td><%= link_to("delete", admin_product_path(product), method: :delete) %></td>
+  <td>
+    <% if product.online %>
+      <span class="product-state">
+    <% else %>
+      <span class="onffline-text product-state">
+    <% end %>
+    <%= product.online_state %>
+    </span>
+  </td>
   <td><%= product.created_at %></td>
+  <% if product.online %>
+    <td><%= link_to("下架", set_online_admin_product_path(product), :online => 1, :product_id => product.id, method: :post, class: "btn btn-sm btn-danger btn-setonline") %></td>
+  <% else %>
+    <td><%= link_to("上架", set_online_admin_product_path(product), :online => 0, :product_id => product.id, method: :post, class: "btn btn-sm btn-danger btn-setonline") %></td>
+  <% end %>
+  <td><%= link_to("编辑", edit_admin_product_path(product), class: "btn btn-sm btn-danger") %></td>
+  <td><%= link_to("删除", admin_product_path(product), method: :delete, class: "btn btn-sm btn-danger") %></td>
+
 </tr>

@@ -10,7 +10,7 @@ products_info = [
  {title: 'd', catetoy: "妈咪", description: '1',image: 'https://images-na.ssl-images-amazon.com/images/I/41zHTkGM4mL._SX200_QL80_.jpg'},
  {title: 'e', catetoy: "寝居玩具", description: '1',image: 'https://images-na.ssl-images-amazon.com/images/I/41zHTkGM4mL._SX200_QL80_.jpg'},
  {title: 'f', catetoy: "婴童", description: '1',image: 'https://images-na.ssl-images-amazon.com/images/I/41zHTkGM4mL._SX200_QL80_.jpg'},
- {title: 'g', catetoy: "喂养", description: '1',image: 'https://images-na.ssl-images-amazon.com/images/I/41zHTkGM4mL._SX200_QL80_.jpg'},
+{title: 'g', catetoy: "喂养", description: '1',image: 'https://images-na.ssl-images-amazon.com/images/I/41zHTkGM4mL._SX200_QL80_.jpg'},
 ]
 
 products_info.each do |info|

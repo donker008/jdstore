@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.all
+    @products = Product.where(:online => true).all
     @all_products =  Hash.new
     @categoies = ProductCategory.all
     @products.each do |product|

@@ -56,7 +56,7 @@ class Order < ApplicationRecord
     if self.aasm_state == "order_cancelled"
       "订单已取消"
     elsif self.aasm_state == "paid"
-      "已支付"
+      "已支付(" + payment_method + ')'
     elsif self.aasm_state == "shipping"
       "出货中"
     elsif self.aasm_state == "shipped"
@@ -107,7 +107,7 @@ class Order < ApplicationRecord
       end
 
       puts "hot24 query " + query
-      
+
       producthash =  Hash.new
       orders.each do | order |
         order.product_lists.each do |product|

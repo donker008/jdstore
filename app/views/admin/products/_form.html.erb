@@ -2,13 +2,14 @@
 
   <div>
     <%= simple_form_for [:admin, @product] do |f| %>
-    <%= f.input :title , lable:"name:" %>
-    <%= f.input :description , lable:"description:" %>
-    <%= f.input :price , lable:"price:" %>
-    <%= f.input :quantity , lable:"quantity:" %>
-    <%= f.input :image , lable:"picture:" %>
+    <%= f.input :title , lable:"商品名:" %>
+    <%= f.input :description , lable:"描述:" %>
+    <%= f.input :price , lable:"价格:" %>
+    <%= f.input :quantity , lable:"库存:" %>
+    <%= f.input :online , lable:"是否上线:" %>
+    <%= f.input :image , lable:"图片:" %>
     <%= f.input :category , collection: @categoies, :value_method => :name, prompt:"选择商品分类",selected: @product.category%>
-    <%= f.submit "Submit", class:"btn btn-lg btn-danger", :disable_with => "Submiting..."  %>
+    <%= f.submit "创建商品", class:"btn btn-lg btn-danger", :disable_with => "Submiting..."  %>
     <% end %>
   </div>
 </div>

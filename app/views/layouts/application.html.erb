@@ -114,6 +114,9 @@
           console.log("1 handleUserCenterMenuLinkClick url: " + url + " \n json: " + JSON.stringify(json));
           // handleUserCenterPaginateLinks();
 
+          //we need bind event
+          bindbtnSetonlineEvent();
+
         }).error(function (error) {
             console.log("2 handleUserCenterMenuLinkClick url: " + url + " \n Error: " + JSON.stringify(error));
         });
@@ -335,13 +338,57 @@
             dataType: "html"
           }
         ).success(function (json) {
-          console.log("1 reloadOrderForUserCenter url: " + url + " \n json: " + JSON.stringify(json));
+          // console.log("1 reloadOrderForUserCenter url: " + url + " \n json: " + JSON.stringify(json));
           eval(json);
 
         }).error(function (error) {
-            console.log("2 reloadOrderForUserCenter url: " + url + " \n Error: " + JSON.stringify(error));
+            // console.log("2 reloadOrderForUserCenter url: " + url + " \n Error: " + JSON.stringify(error));
         });
       }
+    }
+
+    function bindbtnSetonlineEvent(){
+
+      $('.btn-setonline').on('click',(function(event){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        var onlineVar = $(this).attr("online");
+        onlineVar = onlineVar == 1 ? 0 : 1;
+        var product_id = $(this).attr('product_id');
+        var href = $(this).prop('href');
+        $.ajax({
+          context: this,
+          url:href,
+          type: "POST",
+          dataType:"text",
+          data:{online:onlineVar, id:product_id}
+        }).success(function(json){
+            try{
+              console.log('handlebtnSetonlineEvent: success' + json );
+              var td =  $(this).parent();
+              var tr = $(td).parent();
+              var offflinetext = $(tr).find('.product-state');
+              if(1 == onlineVar){
+                $(this).text("下架");
+                $(this).attr('online','1');
+                $(offflinetext).text("已上架");
+                $(offflinetext).removeClass("onffline-text")
+              }
+              else{
+                $(this).text("上架");
+                $(this).attr('online', '0');
+                $(offflinetext).text("已下架");
+                $(offflinetext).addClass("onffline-text")
+              }
+
+            }catch(error){
+              console.log('error: ' + JSON.stringify(error));
+            }
+
+        }).error(function(error){
+            console.log('handlebtnSetonlineEvent: error' + error );
+        });
+      }));
     }
 
     handleHomeCategoryState();

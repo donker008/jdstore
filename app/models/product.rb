@@ -39,4 +39,12 @@ class Product < ApplicationRecord
    return false
  end
 
+ def online_state
+   if self.online == true
+     "已上架"
+   else
+     "已下架"
+   end
+ end
+
 end

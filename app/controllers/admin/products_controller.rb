@@ -4,8 +4,8 @@ class Admin::ProductsController < ApplicationController
  before_action :admin_require
 
  def index
-   @products = Product.all.paginate(:page => params[:page], :per_page => per_page)
-   @categoies = ProductCategory.all
+   @products = Product.all.order("created_at desc").paginate(:page => params[:page], :per_page => per_page)
+   @categoies = ProductCategory.all.order("created_at desc")
  end
 
  def new
@@ -61,10 +61,18 @@ class Admin::ProductsController < ApplicationController
    @categoies = ProductCategory.all
  end
 
+ def set_online
+   online = params[:online].to_i
+   @product = Product.find(params[:id])
+   @product.online = online == 1 ? true: false
+   @product.save
+   render plain: "ok"
+ end
+
  private
 
  def product_params
-   params.require(:product).permit(:title, :description, :price, :quantity, :image, :category)
+   params.require(:product).permit(:title, :description, :price, :quantity, :image, :category, :online)
  end
 
 

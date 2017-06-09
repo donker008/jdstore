@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :products do
       member do
         get :filter_by_category
+        post :set_online
       end
     end
     resources :orders

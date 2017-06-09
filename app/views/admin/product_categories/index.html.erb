@@ -4,7 +4,7 @@
   <div class="row text-right">
     <%=link_to("新建分类", new_admin_product_category_path, class:"btn btn-lg btn-danger admin_btn_new")%>
   </div>
-  <table class="table table-bordered">
+  <table class="table table-boderness">
     <thead>
       <tr>
           <td>
@@ -28,8 +28,8 @@
             <%= category.created_at %>
           </td>
           <td>
-            <%= link_to("编辑", edit_admin_product_category_path(category), class:"btn btn-default btn-sm")%>
-            <%= link_to("删除", admin_product_category_path(category), class:"btn btn-default btn-sm", method: :delete)%>
+            <%= link_to("编辑", edit_admin_product_category_path(category), class:"btn btn-danger btn-sm")%>
+            <%= link_to("删除", admin_product_category_path(category), class:"btn btn-danger btn-sm", method: :delete)%>
           </td>
         </tr>
       <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170607133136) do
+ActiveRecord::Schema.define(version: 20170609040907) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "name"
@@ -58,14 +58,6 @@ ActiveRecord::Schema.define(version: 20170607133136) do
     t.index ["aasm_state"], name: "index_orders_on_aasm_state"
   end
 
-  create_table "personals", force: :cascade do |t|
-    t.text     "name"
-    t.text     "nickname"
-    t.integer  "contant_info"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
   create_table "product_categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -86,10 +78,11 @@ ActiveRecord::Schema.define(version: 20170607133136) do
     t.text     "description"
     t.integer  "price"
     t.integer  "quantity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "image"
     t.string   "category"
+    t.boolean  "online",      default: true
   end
 
   create_table "reviews", force: :cascade do |t|
