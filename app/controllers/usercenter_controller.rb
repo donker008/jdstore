@@ -70,4 +70,17 @@ class UsercenterController < ApplicationController
     end
   end
 
+  def update_user_info
+    if current_user.update(user_params)
+      flash[:notice] = "用户资料修改成功"
+    else
+      flash[:notice] = "用户资料修改失败"
+    end
+    redirect_to :back;
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:name, :nick_name, :sex, :date, :phone, :address);
+  end
 end

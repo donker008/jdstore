@@ -83,6 +83,7 @@ Rails.application.routes.draw do
   end
 
 
+  post "usercenter/update_user_info" => "usercenter#update_user_info"
 
   # match 'usercenter/order' => 'usercenter#order', :via => :get
   # match 'usercenter/address' => 'usercenter#address', :via => :get
