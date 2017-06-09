@@ -84,11 +84,13 @@ class UsercenterController < ApplicationController
   end
 
   def do_upload_user_avatar
+    puts "1 do_upload_user_avatar: " + user_avartar_params.inspect
     if current_user.update(user_avartar_params)
       flash[:notice] = "更新头像成功"
     else
       flash[:notice] = "更新头像失败"
     end
+    puts "2 do_upload_user_avatar -> current_user:" + current_user.inspect
     redirect_to usercenter_index_path
   end
 
@@ -98,6 +100,6 @@ class UsercenterController < ApplicationController
   end
 
   def user_avartar_params
-    params.require(:user).permit(:avatar);
+    params.require(:user).permit(:avatar,:name, :nick_name, :sex, :birthday, :phone, :address);
   end
 end
