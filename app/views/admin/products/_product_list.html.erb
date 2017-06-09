@@ -1,8 +1,12 @@
-<div class="category-list">
-  <%= link_to("所有分类", admin_products_path) %>
+<div class="admin-category-list">
+  <%= link_to "所有分类",product_usercenter_index_path ,method: :post, :remote => true , :class => "active" %>
   <b>|</b>
   <% @categoies.each do |cate| %>
-      <%= link_to(cate.name, filter_by_category_admin_product_path(cate)) %>
+      <% if !@isJSMode.blank? %>
+        <%= link_to(cate.name, filterbycategory_usercenter_index_path ,method: :post, :remote => true, :cate_id =>cate.id ) %>
+      <% else %>
+        <%= link_to(cate.name, filter_by_category_admin_product_path(cate)) %>
+      <% end %>
       <b>|</b>
   <% end %>
 </div>

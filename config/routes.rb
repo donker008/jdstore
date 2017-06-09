@@ -77,6 +77,7 @@ Rails.application.routes.draw do
       match 'category' => 'usercenter#category', via: [:get, :post], as: :category
       match 'favorite' => 'usercenter#favorite', via: [:get, :post], as: :favorite
       match 'product' => 'usercenter#product', via: [:get, :post], as: :product
+      match 'filterbycategory' => 'usercenter#filterbycategory', via:[:get, :post], as: :filterbycategory
     end
 
   end

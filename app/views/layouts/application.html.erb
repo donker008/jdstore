@@ -348,7 +348,7 @@
     }
 
     function bindbtnSetonlineEvent(){
-
+      console.log("bindbtnSetonlineEvent");
       $('.btn-setonline').on('click',(function(event){
         event.preventDefault();
         event.stopImmediatePropagation();
@@ -363,11 +363,14 @@
           dataType:"text",
           data:{online:onlineVar, id:product_id}
         }).success(function(json){
+
+
             try{
               console.log('handlebtnSetonlineEvent: success' + json );
               var td =  $(this).parent();
               var tr = $(td).parent();
               var offflinetext = $(tr).find('.product-state');
+
               if(1 == onlineVar){
                 $(this).text("下架");
                 $(this).attr('online','1');
@@ -391,6 +394,34 @@
       }));
     }
 
+    function bindCategoryLinkEvent(){
+      $('.admin-category-list a').on('click', function(event){
+        event.preventDefault();
+        event.stopImmediatePropagation();
+         var url = $(this).prop('href');
+         var cart_id = $(this).attr('cate_id');
+         $.ajax({
+            type: "POST",
+            url: url,
+            dataType: 'html',
+            data:{'id': cart_id}
+         }).success(function(result){
+            console.log('bindCategoryLinkEvent success:' + JSON.stringify(result));
+            eval(result);
+
+              $('.admin-category-list a').each(function(){
+                  $(this).removeClass('active');
+                  if($(this).attr('cate_id') == cart_id){
+                    $(this).addClass("active")
+                  }
+              });
+
+         }).error(function(result){
+           console.log('bindCategoryLinkEvent error:' + JSON.stringify(result));
+         });
+      })
+    }
+
     handleHomeCategoryState();
     handleMouseOverCartIcon();
     handleUserCenterMenuLinkClick();
@@ -398,6 +429,12 @@
     handlePayNowButtonEvent();
     handleCartListEvent();
     reloadOrderForUserCenter();
+
+    $('#profile-content').bind("DOMSubtreeModified", function(){
+      bindbtnSetonlineEvent();
+      bindCategoryLinkEvent();
+    });
+
   })
   </script>
 </html>

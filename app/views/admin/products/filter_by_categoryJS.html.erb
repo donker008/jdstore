@@ -1,0 +1,7 @@
+<div class="container-fluid">
+  <h2>商品管理</h2>
+  <div class="row text-right">
+    <%= link_to("新增商品", new_admin_product_path, class:"btn btn-lg btn-danger admin_btn_new")%>
+  </div>
+  <%= render "admin/products/product_list"%>
+</div>

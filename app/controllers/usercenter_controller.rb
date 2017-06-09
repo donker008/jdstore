@@ -50,4 +50,24 @@ class UsercenterController < ApplicationController
       format.js
     end
   end
+
+  def filterbycategory
+
+    puts 'filterbycategory: ' + params.inspect
+
+    @isJSMode = 1
+    @category = ProductCategory.find(params[:id])
+    @products = Product.where(:category => @category.name).all
+    @categoies = ProductCategory.all
+    @q  = Product.ransack(params[:q])
+
+    puts 'filterbycategory: category :' + @category.inspect
+
+    puts 'filterbycategory: products :' + @products.inspect
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
