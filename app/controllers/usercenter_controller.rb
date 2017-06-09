@@ -81,6 +81,6 @@ class UsercenterController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :nick_name, :sex, :date, :phone, :address);
+    params.require(:user).permit(:name, :nick_name, :sex, :birthday, :phone, :address);
   end
 end

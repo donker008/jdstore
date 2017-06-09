@@ -5,10 +5,10 @@
         <!-- 添加用户名和姓名-->
         <%= simple_form_for @user, :url => usercenter_update_user_info_path, method: :post do |f| %>
           <div class="form-group">
-            <%= f.input :nick_name , :label => "昵称"%>
-            <%= f.input :name , :label => "姓名"%>
-            <%= f.input :sex , :label => "性别"%>
-            <%= f.input :birthday , :label => "出生日期"%>
+            <%= f.input :nick_name , :label => "昵称", placeholder:'你的昵称'%>
+            <%= f.input :name , :label => "姓名", placeholder: '你的姓名'%>
+            <%= f.input :sex, :label => "性别", collection: {"未知"=>0,"男"=>1,"女"=>2}, selected:@user.sex%>
+            <%= f.input :birthday , :label => "出生日期", as: :date%>
             <%= f.input :phone , :label => "手机号"%>
             <%= f.input :address , :label => "住址"%>
             <%= f.submit "修改个人信息", class: "btn btn-lg btn-danger"%>
