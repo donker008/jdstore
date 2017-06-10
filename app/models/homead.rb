@@ -5,9 +5,9 @@ class Homead < ApplicationRecord
   mount_uploader :image, ImageUploader
   def status_info
     if false == self.online
-      "下线"
+      "已下架"
     else
-      "上线"
+      "已上架"
     end
   end
 
