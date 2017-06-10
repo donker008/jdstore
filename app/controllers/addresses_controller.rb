@@ -52,7 +52,7 @@ class AddressesController < ApplicationController
       @address.is_default = 1
       @address.save
     end
-    redirect_to :back
+    redirect_to usercenter_index_path(type: "address");
   end
 
 
