@@ -7,7 +7,11 @@
       <%= f.input :online , label: "是否上线", :input_html => { :checked => @homead.online }%>
       <%=image_tag(@homead.image, :class => "upload-ad-image")%>
       <%= f.input :image , label: "上传广告图片"%>
-      <%= f.input :product_id, label: "关联商品", :selected => @homead.product.id, :collection => @products, :value_method => :id, :label_method => :title%>
+      <% unless  @homead.product.blank? %>
+         <%= f.input :product_id, label: "关联商品", :selected => @homead.product.id, :collection => @products, :value_method => :id, :label_method => :title%>
+      <% else %>
+          <%= f.input :product_id, label: "关联商品", :collection => @products, :value_method => :id, :label_method => :title%>
+      <% end %>
       <%= f.submit submit_title, class: "btn btn-lg btn-danger", disable_with: "Submiting..."%>
     </div>
   <% end %>

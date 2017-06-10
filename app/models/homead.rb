@@ -12,6 +12,8 @@ class Homead < ApplicationRecord
   end
 
   def product
-    Product.find(self.product_id)
+    if self.product_id
+      Product.find(self.product_id)
+    end
   end
 end
