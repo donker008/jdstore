@@ -85,11 +85,6 @@ class UsercenterController < ApplicationController
 
   def do_upload_user_avatar
     puts "1 do_upload_user_avatar: " + user_avartar_params.inspect
-    if current_user.avatar.file.exists?
-      flash[:notice] = "头像文件已经存在"
-      redirect_to usercenter_index_path
-      return
-    end
 
     if current_user.update(user_avartar_params)
       flash[:notice] = "更新头像成功"

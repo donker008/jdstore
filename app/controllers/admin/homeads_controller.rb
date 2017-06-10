@@ -20,7 +20,7 @@ class Admin::HomeadsController < ApplicationController
     if @homead.update(homaead_params)
       flash[:notice] = "更新首页广告成功"
     else
-      flash[:error] = "更新首页广告失败"
+      flash[:alert] = "更新首页广告失败"
     end
     redirect_to usercenter_index_path(type: "product_ad")
   end
@@ -30,7 +30,7 @@ class Admin::HomeadsController < ApplicationController
     if @homead.save
       flash[:notice] = "创建首页广告成功"
     else
-      flash[:error] = "创建首页广告失败"
+      flash[:alert] = "创建首页广告失败"
     end
     redirect_to usercenter_index_path(type: "product_ad")
   end
@@ -41,10 +41,10 @@ class Admin::HomeadsController < ApplicationController
         if @homead.delete
           flash[:notice] = "删除首页广告成功"
         else
-          flash[:error] = "删除首页广告成功"
+          flash[:alert] = "删除首页广告成功"
         end
     else
-      flash[:error] = "首页广告不存在"
+      flash[:alert] = "首页广告不存在"
     end
     redirect_to usercenter_index_path(type: "product_ad")
   end
