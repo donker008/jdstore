@@ -24,7 +24,7 @@ class Admin::ProductCategoriesController < ApplicationController
   def update
     @category = ProductCategory.find(params[:id])
     @category.update(category_params)
-    redirect_to admin_product_categories_path
+    redirect_to usercenter_index_path(type: "product_category")
   end
 
   def destroy
@@ -36,7 +36,7 @@ class Admin::ProductCategoriesController < ApplicationController
       end
       @category.delete
     end
-    redirect_to admin_product_categories_path
+    redirect_to usercenter_index_path(type: "product_category")
   end
 
   private

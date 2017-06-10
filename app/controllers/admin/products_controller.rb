@@ -19,7 +19,7 @@ class Admin::ProductsController < ApplicationController
      flash[:notice] = "create product success!"
      redirect_to usercenter_index_path(type: "product_all")
    else
-     flash[:error] = "failed to create product!";
+     flash[:alert] = "failed to create product!";
      render :new;
    end
  end
@@ -29,11 +29,10 @@ class Admin::ProductsController < ApplicationController
    @categoies = ProductCategory.all
    if @product.update(product_params)
      flash[:notice] = "update product success!"
-     redirect_to usercenter_index_path(type: "product_all")
    else
      flash[:alert] = "更新商品信息失败" + @product.errors.full_messages.to_s
-
    end
+   redirect_to usercenter_index_path(type: "product_all")
  end
 
  def edit
@@ -49,10 +48,10 @@ class Admin::ProductsController < ApplicationController
    @product = Product.find(params[:id])
    if @product.delete
      flash[:notice] = "delete product success!"
-     redirect_to admin_products_path
    else
-     flash[:error] = "failed to delete product!"
+     flash[:alert] = "failed to delete product!"
    end
+   redirect_to usercenter_index_path(type: "product_all")
  end
 
  def filter_by_category
