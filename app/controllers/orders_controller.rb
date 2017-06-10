@@ -88,7 +88,7 @@ class OrdersController < ApplicationController
     @order = Order.find_by_token(params[:id])
     @order.ship!
     OrderMailer.notify_order_ship(@order).deliver!
-    redirect_to admin_orders_path, notice:"商品出货成功"
+    redirect_to usercenter_index_path(type: "order") ,notice:"商品出货成功"
   end
 
   def pay_method

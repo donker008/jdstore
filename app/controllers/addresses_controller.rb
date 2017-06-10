@@ -23,7 +23,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     @address.update(address_params)
-    redirect_to addresses_path
+    redirect_to usercenter_index_path(type: "address")
   end
 
   def destroy
@@ -33,7 +33,7 @@ class AddressesController < ApplicationController
     else
       flash[:warning] = "地址删除失败"
     end
-    redirect_to addresses_path
+    redirect_to usercenter_index_path(type: "address")
   end
 
   def address_list
