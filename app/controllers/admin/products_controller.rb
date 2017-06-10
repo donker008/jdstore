@@ -17,7 +17,7 @@ class Admin::ProductsController < ApplicationController
    @product = Product.new(product_params)
    if @product.save
      flash[:notice] = "create product success!"
-     redirect_to admin_products_path
+     redirect_to usercenter_index_path(type: "product_all")
    else
      flash[:error] = "failed to create product!";
      render :new;
@@ -29,10 +29,10 @@ class Admin::ProductsController < ApplicationController
    @categoies = ProductCategory.all
    if @product.update(product_params)
      flash[:notice] = "update product success!"
-     render :edit
+     redirect_to usercenter_index_path(type: "product_all")
    else
      flash[:alert] = "更新商品信息失败" + @product.errors.full_messages.to_s
-     redirect_to admin_product_path(@product)
+
    end
  end
 

@@ -12,17 +12,34 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
 
-        <div class="item active">
-          <%= image_tag("http://oqev5xdrn.bkt.clouddn.com/home-header-1.jpg", class:"carousel-img")%>
-        </div>
+        <% unless @homeads.blank? %>
+          <% @homeads.each_with_index do |ad, index|%>
+            <% if 0 == index %>
+              <div class="item active">
+            <% else %>
+              <div class="item">
+            <% end %>
+              <%= link_to product_path(ad.product) do%>
+                <%= image_tag(ad.image, class:"carousel-img")%>
+              <% end %>
 
-        <div class="item">
-          <%= image_tag("http://oqev5xdrn.bkt.clouddn.com/home-header-2.jpg", class:"carousel-img")%>
-        </div>
+            </div>
 
-        <div class="item">
-          <%= image_tag("http://oqev5xdrn.bkt.clouddn.com/home-header-3.jpg", class:"carousel-img")%>
-        </div>
+          <% end %>
+        <% else %>
+          <div class="item active">
+            <%= image_tag("http://oqev5xdrn.bkt.clouddn.com/home-header-1.jpg", class:"carousel-img")%>
+          </div>
+
+          <div class="item">
+            <%= image_tag("http://oqev5xdrn.bkt.clouddn.com/home-header-2.jpg", class:"carousel-img")%>
+          </div>
+
+          <div class="item">
+            <%= image_tag("http://oqev5xdrn.bkt.clouddn.com/home-header-3.jpg", class:"carousel-img")%>
+          </div>
+        <% end %>
+
 
       </div>
 

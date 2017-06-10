@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609124933) do
+ActiveRecord::Schema.define(version: 20170610041047) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20170609124933) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "homeads", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.integer  "priority",   default: 0
+    t.boolean  "online",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "product_id"
   end
 
   create_table "orders", force: :cascade do |t|

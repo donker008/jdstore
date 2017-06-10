@@ -328,9 +328,38 @@
       document.location.search = kvp.join('&');
     }
 
-    function reloadOrderForUserCenter() {
+    function reloadConententForUserCenter() {
+
+      console.log("reloadConententForUserCenter path: " + window.location.pathname);
+      console.log("reloadConententForUserCenter search: " + window.location.search);
+
       if(window.location.pathname =="/usercenter"){
-        var url = window.location.href + '/order';
+        var searchStr = window.location.search;
+        var url = window.location.origin + window.location.pathname;
+        var query = ''
+        if(searchStr.search('address') != -1){
+          query = 'address';
+        }
+        else if(searchStr.search('product_ad') != -1){
+          query = 'homead';
+        }
+        else if(searchStr.search('product_category') != -1){
+          query = 'category';
+        }
+        else if(searchStr.search('user') != -1){
+          query = 'personal';
+        }
+        else if(searchStr.search('order') != -1){
+          query = 'order';
+        }
+        else if(searchStr.search('product_all') != -1){
+          query = 'product';
+        }
+        else{
+          query = 'order';
+        }
+        url += ('/'+query);
+        console.log("url:" + url + "query: " + query);
         $.ajax(
           {
             type: "POST",
@@ -340,11 +369,25 @@
         ).success(function (json) {
           // console.log("1 reloadOrderForUserCenter url: " + url + " \n json: " + JSON.stringify(json));
           eval(json);
+          upateUsercenterMenu(query);
 
         }).error(function (error) {
             // console.log("2 reloadOrderForUserCenter url: " + url + " \n Error: " + JSON.stringify(error));
         });
       }
+    }
+
+    function upateUsercenterMenu(type) {
+
+      $('.profile-usermenu li').each(function(){
+        var href = $(this).find('a').attr('href');
+        if(href.search(type) != -1){
+          $(this).addClass("active");
+        }
+        else{
+          $(this).removeClass("active");
+        }
+      });
     }
 
     function bindbtnSetonlineEvent(){
@@ -428,7 +471,7 @@
     handleAddressListModalEvents();
     handlePayNowButtonEvent();
     handleCartListEvent();
-    reloadOrderForUserCenter();
+    reloadConententForUserCenter();
 
     $('#profile-content').bind("DOMSubtreeModified", function(){
       bindbtnSetonlineEvent();

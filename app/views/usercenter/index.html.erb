@@ -60,6 +60,9 @@ Licensed under MIT
 							我的收藏 </a>
               <% end %>
 						</li>
+            <li>
+              <br />
+            </li>
             <% if current_user.is_admin %>
               <li>
                 <%= link_to category_usercenter_index_path ,method: :post, :remote => true do %>
@@ -71,6 +74,12 @@ Licensed under MIT
                 <%= link_to product_usercenter_index_path ,method: :post, :remote => true do %>
   							<i class="fa fa-cubes" aria-hidden="true"></i>
   							所有商品 </a>
+                <% end %>
+  						</li>
+              <li>
+                <%= link_to homead_usercenter_index_path ,method: :post, :remote => true do %>
+  							<i class="fa fa-rocket" aria-hidden="true"></i>
+  							首页广告 </a>
                 <% end %>
   						</li>
 						<% end %>

@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
          end
          product_temps.push(product)
     end
+    @homeads = Homead.where(:online => true).all.order('priority desc').limit(3)
     @q  = Product.ransack(params[:q])
 
   end

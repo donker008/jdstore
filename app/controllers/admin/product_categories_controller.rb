@@ -14,7 +14,7 @@ class Admin::ProductCategoriesController < ApplicationController
   def create
     @category = ProductCategory.new(category_params)
     @category.save
-    redirect_to admin_product_categories_path
+    redirect_to usercenter_index_path(type: "product_category")
   end
 
   def edit

@@ -736,7 +736,7 @@ margin: 20px;
   height: auto;
 }
 
-.product-detail,.favorite-page,.product-home, .order-page, .address-page, .edit-address, .new-address , .cart-detail, .payment-page, .upload-avatar-page{
+.product-detail,.favorite-page,.product-home, .order-page, .address-page, .edit-address, .new-address , .cart-detail, .payment-page, .upload-avatar-page ,.admin-edit-homead-page{
   width:1200px;
 }
 
@@ -1144,9 +1144,9 @@ Licensed under MIT
 }
 
 .profile-usermenu ul li.active a {
-  color: #5b9bd1;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
+  color: white;
+  background-color: #e35150;
+  border-left: 4px solid #93a3b5;
   margin-left: -2px;
 }
 
@@ -1347,4 +1347,20 @@ Licensed under MIT
 
 .payment-page .content .pay-method{
   margin: 10px 0;
+}
+
+// admin-home
+.admin-homead-page .empty{
+  font-weight: 100;
+  margin-top: 100px;
+}
+.admin-homead-page .home-ad-img{
+  width: 120px;
+}
+.admin-edit-homead-page .upload-ad-image{
+  margin: 40px 0px;
+}
+
+.admin-product-page .edit-product{
+  margin: 50px 0;
 }

@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     end
     resources :orders
     resources :product_categories
+    resources :homeads do
+      member do
+        post :set_online
+      end
+    end
   end
   resources :products do
     member do
@@ -78,6 +83,7 @@ Rails.application.routes.draw do
       match 'favorite' => 'usercenter#favorite', via: [:get, :post], as: :favorite
       match 'product' => 'usercenter#product', via: [:get, :post], as: :product
       match 'filterbycategory' => 'usercenter#filterbycategory', via:[:get, :post], as: :filterbycategory
+      match 'homead' => 'usercenter#homead', via:[:get, :post], as: :homead
     end
 
   end

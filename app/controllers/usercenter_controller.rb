@@ -76,7 +76,7 @@ class UsercenterController < ApplicationController
     else
       flash[:notice] = "用户资料修改失败"
     end
-    redirect_to :back;
+    redirect_to usercenter_index_path(type: "user")
   end
 
   def upload_user_avatar
@@ -97,9 +97,15 @@ class UsercenterController < ApplicationController
       flash[:notice] = "更新头像失败"
     end
     puts "2 do_upload_user_avatar -> current_user:" + current_user.inspect
-    redirect_to usercenter_index_path
+    redirect_to usercenter_index_path(type: "user")
   end
 
+  def homead
+    @homeads = Homead.all.order('created_at').paginate(:page => params[:page], :per_page => per_page)
+    respond_to do |format|
+      format.js
+    end
+  end
   private
   def user_params
     params.require(:user).permit(:name, :nick_name, :sex, :birthday, :phone, :address);
