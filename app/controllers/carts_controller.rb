@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @cart = current_cart
     @immediately_cart = current_immediately_cart
